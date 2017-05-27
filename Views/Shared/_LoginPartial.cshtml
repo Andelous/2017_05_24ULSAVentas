@@ -5,18 +5,16 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    </ul>
+    <div class="nav navbar-nav navbar-right">
+        <a href="@Url.Action("Index", "Manage")" title="Manage" class="btn btn-default navbar-btn">Hola @User.Identity.GetUserName()</a>
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger navbar-btn">Cerrar sesión</a>
+    </div>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <div class="nav navbar-nav navbar-right">
+        <a href="@Url.Action("Register", "Account")" class="btn btn-success navbar-btn">Regístrate <span class="glyphicon glyphicon-user"></span></a>
+        <a href="@Url.Action("Login", "Account")" class="btn btn-primary navbar-btn">Iniciar sesión <span class="glyphicon glyphicon-log-in"></span></a>
+    </div>
 }

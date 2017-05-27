@@ -1,0 +1,45 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Direccion>
+
+@{
+    ViewBag.Title = "Direcciones";
+}
+
+<div class="row">
+    <div class="col-xs-6">
+        <h2 class="page-header">Direcciones</h2>
+        @if (Model.Count > 0)
+        {
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Dirección
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+                @foreach (Direccion d in Model)
+                {
+                    <tr>
+                        <td>
+                            @d.calle @d.numeroExterior, @d.colonia, @d.estado
+                        </td>
+                        <td>
+                            <a href="#">Mostrar en mapa</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p class="text-warning">No se encontraron direcciones en la base de datos.</p>
+        }
+    </div>
+
+    <div class="col-xs-6">
+        <h2 class="page-header">Mapa</h2>
+
+    </div>
+</div>

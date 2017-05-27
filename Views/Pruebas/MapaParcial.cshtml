@@ -1,0 +1,26 @@
+﻿<div id="map"></div>
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyALXgbW0cYrzppT9E-e6xTRIQi5WuY1lUA&sensor=false"></script>
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function initMap() {
+        var uluru = { lat: getParameterByName("lat"), lng: getParameterByName("lng") };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
