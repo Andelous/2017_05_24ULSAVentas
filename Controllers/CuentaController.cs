@@ -7,7 +7,8 @@ using System.Web.Mvc;
 
 namespace _2017_05_24ULSAVentas.Controllers
 {
-    public class PruebasController : Controller
+    [Authorize]
+    public class CuentaController : Controller
     {
         private static ULSAVentasDataContext _db = new ULSAVentasDataContext();
         private static ULSAVentasDataContext db
@@ -18,19 +19,13 @@ namespace _2017_05_24ULSAVentas.Controllers
             }
         }
 
-
-        // GET: Pruebas
-        [Authorize]
+        // GET: Cuenta
         public ActionResult Index()
         {
-            return View(db.Direccion.ToList());
-        }
+            AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.Email == User.Identity.Name);
+            Usuario usuario = db.Usuario.First(u => u.Id == usuarioAsp.Id);
 
-        [Authorize]
-        public ActionResult MapaParcial(string lat, string lng)
-        {
-            string[] s = { lat, lng };
-            return PartialView(s);
+            return View(usuario);
         }
     }
 }

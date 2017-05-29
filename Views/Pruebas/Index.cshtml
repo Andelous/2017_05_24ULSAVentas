@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Direcciones";
+    int i = 0;
 }
 
 <div class="row">
@@ -23,10 +24,10 @@
                 {
                     <tr>
                         <td>
-                            @d.calle @d.numeroExterior, @d.colonia, @d.estado
+                            @d.calle @d.numeroExterior, @d.colonia, @d.estado @{i++;} @i
                         </td>
                         <td>
-                            <a href="#">Mostrar en mapa</a>
+                            @Ajax.ActionLink("Mostrar mapa", "MapaParcial", "Pruebas", new { lat = d.latitud, lng = d.longitud }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divMapa" })
                         </td>
                     </tr>
                 }
@@ -41,5 +42,8 @@
     <div class="col-xs-6">
         <h2 class="page-header">Mapa</h2>
 
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBosm5YSmCWuTxoAYG2GGSFF3yLamdXNJE"></script>
+
+        <div id="divMapa"></div>
     </div>
 </div>

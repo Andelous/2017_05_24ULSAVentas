@@ -15,6 +15,15 @@ namespace _2017_05_24ULSAVentas.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private static ULSAVentasDataContext _db = new ULSAVentasDataContext();
+        private static ULSAVentasDataContext db
+        {
+            get
+            {
+                return _db;
+            }
+        }
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -75,7 +84,7 @@ namespace _2017_05_24ULSAVentas.Controllers
 
             // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
             // Para permitir que los errores de contraseña desencadenen el bloqueo de la cuenta, cambie a shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,17 +160,44 @@ namespace _2017_05_24ULSAVentas.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Usuario, Email = "mail@mail.com" };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+
+
+                    AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.UserName == user.UserName);
+
+                    Persona p = new Persona { nombres = "Sin especificar", apellidoPaterno = "Sin especificar", apellidoMaterno = "Sin especificar", fechaDeNacimiento = new DateTime(2000, 1, 1) };
+                    db.Persona.InsertOnSubmit(p);
+                    db.SubmitChanges();
+
+                    /*
+                    Correo c = new Correo
+                    {
+                        direccionDeCorreo = model.Email,
+                        idPersona = p.idPersona
+                    };
+                    */
+                    Usuario u = new Usuario
+                    {
+                        usuario1 = usuarioAsp.UserName,
+                        contrasena = model.Password,
+                        idPersona = p.idPersona,
+                        Id = usuarioAsp.Id
+                    };
+
+                    //db.Correo.InsertOnSubmit(c);
+                    db.Usuario.InsertOnSubmit(u);
+                    db.SubmitChanges();
 
                     return RedirectToAction("Index", "Home");
                 }
