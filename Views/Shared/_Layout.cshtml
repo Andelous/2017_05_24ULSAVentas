@@ -1,5 +1,5 @@
 ﻿@{ 
-    string paginaActiva = ViewBag.paginaActiva;
+    string homePaginaActiva = ViewBag.homePaginaActiva;
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     @Styles.Render("~/Content/css")
 </head>
 
-<body>
+<body style="font-family:Open Sans">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
 
@@ -20,33 +20,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-shopping-cart"></span> ULSA Ventas</a>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")" style="color:white;"><span class="glyphicon glyphicon-shopping-cart"></span> <strong>ULSA</strong> Ventas</a>
             </div>
 
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav">
-                    <li class="@(paginaActiva == "Inicio" ? "active":"")"><a href="#">Inicio</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Page 1-1</a></li>
-                            <li><a href="#">Page 1-2</a></li>
-                            <li><a href="#">Page 1-3</a></li>
-                            <li>@Html.ActionLink("Ver locaciones", "Index", "Pruebas")</li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Acerca de nosotros</a></li>
+                    <li class="@(homePaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="@(homePaginaActiva == "nuevaPublicacion" ? "active":"")"><a href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
 
                 <form class="navbar-form navbar-right">
-                    <div class="form-group">
+                    <div class="input-group">
                         <input type="text" class="form-control" placeholder="Búsqueda" name="busqueda">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    
                 </form>
 
             </div>
@@ -62,7 +55,14 @@
 
         <footer class="footer">
             <div class="container">
-                <p class="text-muted">&copy; @DateTime.Now.Year - ULSA Ventas</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-center text-info">&copy; @DateTime.Now.Year - <strong>ULSA</strong> Ventas</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-center text-info"><a href="@Url.Action("About", "Home")">Acerca de nosotros <span class="glyphicon glyphicon-question-sign"></span></a></p>
+                    </div>
+                </div>
             </div>
         </footer>
     </div>

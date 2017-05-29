@@ -22,7 +22,7 @@ namespace _2017_05_24ULSAVentas.Controllers
         // GET: Cuenta
         public ActionResult Index()
         {
-            AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.Email == User.Identity.Name);
+            AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.UserName == User.Identity.Name);
             Usuario usuario = db.Usuario.First(u => u.Id == usuarioAsp.Id);
 
             return View(usuario);

@@ -292,6 +292,7 @@
     <Content Include="Views\Pruebas\Index.cshtml" />
     <Content Include="Views\Pruebas\MapaParcial.cshtml" />
     <Content Include="Views\Cuenta\Index.cshtml" />
+    <Content Include="Views\Cuenta\_LayoutCuenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
