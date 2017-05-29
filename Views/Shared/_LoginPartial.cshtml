@@ -1,20 +1,20 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    @if (Request.IsAuthenticated)
     {
-    @Html.AntiForgeryToken()
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="nav navbar-nav navbar-right">
-        <a href="@Url.Action("Index", "Manage")" title="Manage" class="btn btn-default navbar-btn">Hola @User.Identity.GetUserName()</a>
-        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger navbar-btn">Cerrar sesión</a>
-    </div>
+            <div class="nav navbar-nav navbar-right" style="margin-right: 15px">
+                <a href="@Url.Action("Index", "Manage")" title="Manage" class="btn btn-default navbar-btn">Hola @User.Identity.GetUserName()</a>
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger navbar-btn">Cerrar sesión</a>
+            </div>
+        }
     }
-}
-else
-{
-    <div class="nav navbar-nav navbar-right">
-        <a href="@Url.Action("Register", "Account")" class="btn btn-success navbar-btn">Regístrate <span class="glyphicon glyphicon-user"></span></a>
-        <a href="@Url.Action("Login", "Account")" class="btn btn-primary navbar-btn">Iniciar sesión <span class="glyphicon glyphicon-log-in"></span></a>
-    </div>
-}
+    else
+    {
+        <div class="nav navbar-nav navbar-right" style="margin-right: 0px">
+            <a href="@Url.Action("Register", "Account")" class="btn btn-success navbar-btn">Regístrate <span class="glyphicon glyphicon-user"></span></a>
+            <a href="@Url.Action("Login", "Account")" class="btn btn-primary navbar-btn">Iniciar sesión <span class="glyphicon glyphicon-log-in"></span></a>
+        </div>
+    }

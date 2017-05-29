@@ -176,17 +176,17 @@ namespace _2017_05_24ULSAVentas.Controllers
 
                     AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.UserName == user.UserName);
 
-                    Persona p = new Persona { nombres = "Sin especificar", apellidoPaterno = "Sin especificar", apellidoMaterno = "Sin especificar", fechaDeNacimiento = new DateTime(2000, 1, 1) };
+                    Persona p = new Persona
+                    {
+                        nombres = "Sin especificar",
+                        apellidoPaterno = "Sin especificar",
+                        apellidoMaterno = "Sin especificar",
+                        fechaDeNacimiento = new DateTime(2000, 1, 1)
+                    };
+
                     db.Persona.InsertOnSubmit(p);
                     db.SubmitChanges();
 
-                    /*
-                    Correo c = new Correo
-                    {
-                        direccionDeCorreo = model.Email,
-                        idPersona = p.idPersona
-                    };
-                    */
                     Usuario u = new Usuario
                     {
                         usuario1 = usuarioAsp.UserName,
@@ -195,7 +195,6 @@ namespace _2017_05_24ULSAVentas.Controllers
                         Id = usuarioAsp.Id
                     };
 
-                    //db.Correo.InsertOnSubmit(c);
                     db.Usuario.InsertOnSubmit(u);
                     db.SubmitChanges();
 
