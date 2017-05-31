@@ -20,9 +20,9 @@ namespace _2017_05_24ULSAVentas.Models
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="UlsaVentas")]
+    using System.ComponentModel.DataAnnotations;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="UlsaVentas")]
 	public partial class ULSAVentasDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -2577,8 +2577,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_calle", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Calle")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_calle", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string calle
 		{
 			get
@@ -2597,8 +2599,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroExterior", DbType="VarChar(10)")]
+
+        
+        [Display(Name = "Núm. Ext.")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroExterior", DbType="VarChar(10)")]
 		public string numeroExterior
 		{
 			get
@@ -2617,8 +2621,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroInterior", DbType="VarChar(10)")]
+
+        
+        [Display(Name = "Num. Int.")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroInterior", DbType="VarChar(10)")]
 		public string numeroInterior
 		{
 			get
@@ -2637,8 +2643,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_colonia", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Colonia")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_colonia", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string colonia
 		{
 			get
@@ -2657,8 +2665,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigoPostal", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Código postal")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigoPostal", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
 		public string codigoPostal
 		{
 			get
@@ -2677,8 +2687,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Estado")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string estado
 		{
 			get
@@ -2721,8 +2733,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longitud", DbType="VarChar(30)")]
+
+
+        [Display(Name = "Longitud")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longitud", DbType="VarChar(30)")]
 		public string longitud
 		{
 			get
@@ -2741,8 +2755,9 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_latitud", DbType="VarChar(30)")]
+
+        [Display(Name = "Latitud")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_latitud", DbType="VarChar(30)")]
 		public string latitud
 		{
 			get
@@ -2815,7 +2830,12 @@ namespace _2017_05_24ULSAVentas.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
+
+        public override string ToString()
+        {
+            return calle + " " + numeroExterior + ", " + colonia + ", " + estado;
+        }
+    }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Favorito")]
 	public partial class Favorito : INotifyPropertyChanging, INotifyPropertyChanged
@@ -3104,8 +3124,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombres", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Nombres")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombres", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string nombres
 		{
 			get
@@ -3124,8 +3146,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellidoPaterno", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Apellido paterno")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellidoPaterno", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
 		public string apellidoPaterno
 		{
 			get
@@ -3144,8 +3168,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellidoMaterno", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Apellido materno")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellidoMaterno", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
 		public string apellidoMaterno
 		{
 			get
@@ -3164,8 +3190,8 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaDeNacimiento", DbType="DateTime NOT NULL")]
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaDeNacimiento", DbType="DateTime NOT NULL")]
 		public System.DateTime fechaDeNacimiento
 		{
 			get

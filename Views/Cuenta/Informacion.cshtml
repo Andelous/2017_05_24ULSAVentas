@@ -1,0 +1,62 @@
+﻿@using _2017_05_24ULSAVentas.Models
+
+@model Persona
+
+@{
+    Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
+    ViewBag.Title = "Información";
+    ViewBag.cuentaPaginaActiva = "informacion";
+
+    bool? cuentaPersonaModificada = ViewBag.cuentaPersonaModificada;
+}
+
+@if (cuentaPersonaModificada == true)
+{
+    <div class="alert alert-success">
+        Datos modificados con éxito.
+    </div>
+}
+else if (cuentaPersonaModificada == false)
+{
+    <div class="alert alert-danger">
+        Los datos no se han modificado.
+    </div>
+}
+
+@using (Html.BeginForm("Informacion", "Cuenta", FormMethod.Post))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.nombres)
+        @Html.TextBoxFor(p => p.nombres, new { @class="form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.apellidoPaterno)
+        @Html.TextBoxFor(p => p.apellidoPaterno, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.apellidoMaterno)
+        @Html.TextBoxFor(p => p.apellidoMaterno, new { @class = "form-control" })
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Guardar"/>
+}
+
+<hr />
+<h3 class="page-header"><span class="glyphicon glyphicon-map-marker"></span> Direcciones</h3>
+
+<div>
+    @Html.Action("Index", "Direccion")
+</div>
+
+<hr />
+<h3 class="page-header"><span class="glyphicon glyphicon-envelope"></span> Correos</h3>
+
+<div>
+    @Html.Action("Correos", "Cuenta")
+</div>
+
+@{
+    ViewBag.cuentaPersonaModificada = null;
+}

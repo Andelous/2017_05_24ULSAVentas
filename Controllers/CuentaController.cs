@@ -20,12 +20,69 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         // GET: Cuenta
+        [HttpGet]
         public ActionResult Index()
         {
-            AspNetUsers usuarioAsp = db.AspNetUsers.First(ua => ua.UserName == User.Identity.Name);
-            Usuario usuario = db.Usuario.First(u => u.Id == usuarioAsp.Id);
+            Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
 
             return View(usuario);
+        }
+
+        [HttpGet]
+        public ActionResult Informacion()
+        {
+            Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+
+            return View(usuario.Persona);
+        }
+
+        [HttpPost]
+        public ActionResult Informacion(Persona p)
+        {
+            if (ModelState.IsValid)
+            {
+                Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+
+                usuario.Persona.apellidoMaterno = p.apellidoMaterno;
+                usuario.Persona.apellidoPaterno = p.apellidoPaterno;
+                usuario.Persona.nombres = p.nombres;
+
+                try
+                {
+                    db.SubmitChanges();
+                    ViewBag.cuentaPersonaModificada = true;
+                }
+                catch (Exception)
+                {
+                    ViewBag.cuentaPersonaModificada = false;
+                }
+            }
+
+            return View(p);
+        }
+
+        public ActionResult Publicaciones()
+        {
+            return View();
+        }
+
+        public ActionResult Favoritos()
+        {
+            return View();
+        }
+
+        public ActionResult Compras()
+        {
+            return View();
+        }
+
+        // CORREOS
+        // Y sus acciones de agregar, modificar y eliminar
+        public ActionResult Correos()
+        {
+            Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+
+            return PartialView(usuario.Persona.Correo.ToList());
         }
     }
 }

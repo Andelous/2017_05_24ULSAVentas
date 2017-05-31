@@ -1,0 +1,55 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Direccion
+
+<div id="divFormularioDireccion">
+
+    @using (Ajax.BeginForm("AgregarDireccionPost", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divFormularioDireccion" }))
+    {
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.calle)
+            @Html.TextBoxFor(d => d.calle, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.numeroExterior) (Opcional)
+            @Html.TextBoxFor(d => d.numeroExterior, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.numeroInterior) (Opcional)
+            @Html.TextBoxFor(d => d.numeroInterior, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.colonia)
+            @Html.TextBoxFor(d => d.colonia, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.codigoPostal)
+            @Html.TextBoxFor(d => d.codigoPostal, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.estado)
+            @Html.TextBoxFor(d => d.estado, new { @class = "form-control" })
+        </div>
+
+        <h4 class="page-header"><span class="glyphicon glyphicon-map-marker"></span> Opciones de mapa (opcionales)</h4>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.latitud)
+            @Html.TextBoxFor(d => d.latitud, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.longitud)
+            @Html.TextBoxFor(d => d.longitud, new { @class = "form-control" })
+        </div>
+
+        <input type="submit" class="btn btn-success" value="Agregar" />
+
+    }
+
+</div>

@@ -1,0 +1,82 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Direccion>
+
+<p>
+    <a data-toggle="modal" data-target="#modalAgregarDireccion"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
+</p>
+
+<div class="modal fade" id="modalAgregarDireccion" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar direccion</h4>
+            </div>
+
+            <div class="modal-body">
+                @Html.Action("AgregarDireccion", "Direccion")
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalEliminarDireccion" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Eliminar direccion</h4>
+            </div>
+
+            <div class="modal-body">
+                Hola!
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@if (Model.Count > 0)
+{
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+        @foreach (Direccion d in Model)
+        {
+            <tr>
+                <td>
+                    @d
+                </td>
+                <td>
+                    <a href="#"  data-toggle="modal" data-target="#modalEliminarDireccion">Eliminar</a> | <a href="#">Modificar</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-info">Sin direcciones</div>
+}
