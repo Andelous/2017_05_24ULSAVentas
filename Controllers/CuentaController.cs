@@ -50,12 +50,14 @@ namespace _2017_05_24ULSAVentas.Controllers
                 try
                 {
                     db.SubmitChanges();
-                    ViewBag.cuentaPersonaModificada = true;
+                    TempData["cuentaPersonaModificada"] = true;
                 }
                 catch (Exception)
                 {
-                    ViewBag.cuentaPersonaModificada = false;
+                    TempData["cuentaPersonaModificada"] = false;
                 }
+
+                return RedirectToAction("Informacion", "Cuenta");
             }
 
             return View(p);

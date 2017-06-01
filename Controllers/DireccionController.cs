@@ -45,8 +45,6 @@ namespace _2017_05_24ULSAVentas.Controllers
                 db.Direccion.InsertOnSubmit(d);
                 db.SubmitChanges();
 
-                ViewBag.cuentaDireccionAgregada = true;
-
                 return PartialView();
             }
 
@@ -68,7 +66,20 @@ namespace _2017_05_24ULSAVentas.Controllers
         [HttpGet]
         public ActionResult EliminarDireccion(int idDireccion)
         {
-            return PartialView();
+            try
+            {
+                Direccion d = db.Direccion.First(d1 => d1.idDireccion == idDireccion);
+                db.Direccion.DeleteOnSubmit(d);
+
+                db.SubmitChanges();
+                TempData["direcccionDireccionEliminada"] = true;
+            }
+            catch (Exception)
+            {
+                TempData["direcccionDireccionEliminada"] = false;
+            }
+
+            return RedirectToAction("Informacion", "Cuenta");
         }
     }
 }
