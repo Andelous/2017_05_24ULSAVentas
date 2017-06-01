@@ -48,13 +48,15 @@ namespace _2017_05_24ULSAVentas.Controllers
                 return PartialView();
             }
 
-            return PartialView("AgregarDireccion");
+            return PartialView("AgregarDireccion", d);
         }
 
         [HttpGet]
-        public ActionResult ModificarDireccion()
+        public ActionResult ModificarDireccion(int idDireccion)
         {
-            return PartialView();
+            Direccion d = db.Direccion.First(d1 => d1.idDireccion == idDireccion);
+
+            return PartialView(d);
         }
 
         [HttpPost]

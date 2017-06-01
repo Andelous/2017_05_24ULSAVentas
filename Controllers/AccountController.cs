@@ -160,7 +160,7 @@ namespace _2017_05_24ULSAVentas.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Usuario, Email = "mail@mail.com" };
+                var user = new ApplicationUser { UserName = model.Usuario, Email = model.Usuario + "@mail.com" };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)

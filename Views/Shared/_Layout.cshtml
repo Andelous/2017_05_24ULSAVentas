@@ -26,8 +26,8 @@
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav">
-                    <li class="@(homePaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="@(homePaginaActiva == "nuevaPublicacion" ? "active":"")"><a href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
+                    <li class="@(homePaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")" data-toggle="tooltip" data-placement="bottom" title="Inicio"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="@(homePaginaActiva == "nuevaPublicacion" ? "active":"")"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Publicar"><span class="glyphicon glyphicon-plus"></span></a></li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
@@ -72,6 +72,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 
 </html>

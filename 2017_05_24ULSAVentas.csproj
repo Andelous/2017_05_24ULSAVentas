@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PruebasController.cs" />
+    <Compile Include="Controllers\PublicacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,9 +308,11 @@
     <Content Include="Views\Direccion\Index.cshtml" />
     <Content Include="Views\Direccion\AgregarDireccion.cshtml" />
     <Content Include="Views\Direccion\AgregarDireccionPost.cshtml" />
+    <Content Include="Views\Direccion\ModificarDireccion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Publicacion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
