@@ -13,8 +13,8 @@
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="usuario" Member="usuario1" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="contrasena" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Usuario_Comentario" Member="Comentario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Comentario" />
       <Association Name="Usuario_Compra" Member="Compra" ThisKey="idUsuario" OtherKey="idUsuario" Type="Compra" />
       <Association Name="Usuario_Favorito" Member="Favorito" ThisKey="idUsuario" OtherKey="idUsuario" Type="Favorito" />
@@ -91,6 +91,8 @@
       <Column Name="idCompra" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idPublicacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTarjeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="comentarioDeCompra" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
@@ -98,7 +100,9 @@
       <Column Name="calificacionDeCompra" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="calificacionDeVenta" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Usuario_Compra" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Direccion_Compra" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
       <Association Name="Publicacion_Compra" Member="Publicacion" ThisKey="idPublicacion" OtherKey="idPublicacion" Type="Publicacion" IsForeignKey="true" />
+      <Association Name="TarjetaDeCredito_Compra" Member="TarjetaDeCredito" ThisKey="idTarjeta" OtherKey="idTarjeta" Type="TarjetaDeCredito" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Correo" Member="Correo">
@@ -121,15 +125,15 @@
       <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="longitud" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="latitud" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Direccion_Compra" Member="Compra" ThisKey="idDireccion" OtherKey="idDireccion" Type="Compra" />
       <Association Name="Persona_Direccion" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Favorito" Member="Favorito">
     <Type Name="Favorito">
+      <Column Name="idFavorito" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idPublicacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="fechaDeAgregado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="idFavorito" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="Usuario_Favorito" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" />
       <Association Name="Publicacion_Favorito" Member="Publicacion" ThisKey="idPublicacion" OtherKey="idPublicacion" Type="Publicacion" IsForeignKey="true" />
     </Type>
@@ -156,6 +160,7 @@
       <Column Name="precio" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
       <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="direccionImagen" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Association Name="Publicacion_Comentario" Member="Comentario" ThisKey="idPublicacion" OtherKey="idPublicacion" Type="Comentario" />
       <Association Name="Publicacion_Compra" Member="Compra" ThisKey="idPublicacion" OtherKey="idPublicacion" Type="Compra" />
       <Association Name="Publicacion_Favorito" Member="Favorito" ThisKey="idPublicacion" OtherKey="idPublicacion" Type="Favorito" />
@@ -167,6 +172,7 @@
       <Column Name="idTarjeta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="numeroDeTarjeta" Type="System.String" DbType="VarChar(22) NOT NULL" CanBeNull="false" />
       <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TarjetaDeCredito_Compra" Member="Compra" ThisKey="idTarjeta" OtherKey="idTarjeta" Type="Compra" />
       <Association Name="Persona_TarjetaDeCredito" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
     </Type>
   </Table>

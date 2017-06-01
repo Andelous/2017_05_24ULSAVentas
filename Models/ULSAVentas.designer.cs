@@ -22,6 +22,7 @@ namespace _2017_05_24ULSAVentas.Models
 	using System;
     using System.ComponentModel.DataAnnotations;
 
+
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="UlsaVentas")]
 	public partial class ULSAVentasDataContext : System.Data.Linq.DataContext
 	{
@@ -385,9 +386,9 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private string _contrasena;
 		
-		private int _idPersona;
-		
 		private string _Id;
+		
+		private int _idPersona;
 		
 		private EntitySet<Comentario> _Comentario;
 		
@@ -411,10 +412,10 @@ namespace _2017_05_24ULSAVentas.Models
     partial void Onusuario1Changed();
     partial void OncontrasenaChanging(string value);
     partial void OncontrasenaChanged();
-    partial void OnidPersonaChanging(int value);
-    partial void OnidPersonaChanged();
     partial void OnIdChanging(string value);
     partial void OnIdChanged();
+    partial void OnidPersonaChanging(int value);
+    partial void OnidPersonaChanged();
     #endregion
 		
 		public Usuario()
@@ -488,30 +489,6 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					if (this._Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._idPersona = value;
-					this.SendPropertyChanged("idPersona");
-					this.OnidPersonaChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
 		public string Id
 		{
@@ -532,6 +509,30 @@ namespace _2017_05_24ULSAVentas.Models
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
+		public int idPersona
+		{
+			get
+			{
+				return this._idPersona;
+			}
+			set
+			{
+				if ((this._idPersona != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidPersonaChanging(value);
+					this.SendPropertyChanging();
+					this._idPersona = value;
+					this.SendPropertyChanged("idPersona");
+					this.OnidPersonaChanged();
 				}
 			}
 		}
@@ -2023,6 +2024,10 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private int _idPublicacion;
 		
+		private int _idTarjeta;
+		
+		private int _idDireccion;
+		
 		private int _cantidad;
 		
 		private System.DateTime _fecha;
@@ -2037,7 +2042,11 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private EntityRef<Usuario> _Usuario;
 		
+		private EntityRef<Direccion> _Direccion;
+		
 		private EntityRef<Publicacion> _Publicacion;
+		
+		private EntityRef<TarjetaDeCredito> _TarjetaDeCredito;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -2049,6 +2058,10 @@ namespace _2017_05_24ULSAVentas.Models
     partial void OnidUsuarioChanged();
     partial void OnidPublicacionChanging(int value);
     partial void OnidPublicacionChanged();
+    partial void OnidTarjetaChanging(int value);
+    partial void OnidTarjetaChanged();
+    partial void OnidDireccionChanging(int value);
+    partial void OnidDireccionChanged();
     partial void OncantidadChanging(int value);
     partial void OncantidadChanged();
     partial void OnfechaChanging(System.DateTime value);
@@ -2066,7 +2079,9 @@ namespace _2017_05_24ULSAVentas.Models
 		public Compra()
 		{
 			this._Usuario = default(EntityRef<Usuario>);
+			this._Direccion = default(EntityRef<Direccion>);
 			this._Publicacion = default(EntityRef<Publicacion>);
+			this._TarjetaDeCredito = default(EntityRef<TarjetaDeCredito>);
 			OnCreated();
 		}
 		
@@ -2134,6 +2149,54 @@ namespace _2017_05_24ULSAVentas.Models
 					this._idPublicacion = value;
 					this.SendPropertyChanged("idPublicacion");
 					this.OnidPublicacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTarjeta", DbType="Int NOT NULL")]
+		public int idTarjeta
+		{
+			get
+			{
+				return this._idTarjeta;
+			}
+			set
+			{
+				if ((this._idTarjeta != value))
+				{
+					if (this._TarjetaDeCredito.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTarjetaChanging(value);
+					this.SendPropertyChanging();
+					this._idTarjeta = value;
+					this.SendPropertyChanged("idTarjeta");
+					this.OnidTarjetaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idDireccion", DbType="Int NOT NULL")]
+		public int idDireccion
+		{
+			get
+			{
+				return this._idDireccion;
+			}
+			set
+			{
+				if ((this._idDireccion != value))
+				{
+					if (this._Direccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidDireccionChanging(value);
+					this.SendPropertyChanging();
+					this._idDireccion = value;
+					this.SendPropertyChanged("idDireccion");
+					this.OnidDireccionChanged();
 				}
 			}
 		}
@@ -2292,6 +2355,40 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Direccion_Compra", Storage="_Direccion", ThisKey="idDireccion", OtherKey="idDireccion", IsForeignKey=true)]
+		public Direccion Direccion
+		{
+			get
+			{
+				return this._Direccion.Entity;
+			}
+			set
+			{
+				Direccion previousValue = this._Direccion.Entity;
+				if (((previousValue != value) 
+							|| (this._Direccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Direccion.Entity = null;
+						previousValue.Compra.Remove(this);
+					}
+					this._Direccion.Entity = value;
+					if ((value != null))
+					{
+						value.Compra.Add(this);
+						this._idDireccion = value.idDireccion;
+					}
+					else
+					{
+						this._idDireccion = default(int);
+					}
+					this.SendPropertyChanged("Direccion");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Publicacion_Compra", Storage="_Publicacion", ThisKey="idPublicacion", OtherKey="idPublicacion", IsForeignKey=true)]
 		public Publicacion Publicacion
 		{
@@ -2322,6 +2419,40 @@ namespace _2017_05_24ULSAVentas.Models
 						this._idPublicacion = default(int);
 					}
 					this.SendPropertyChanged("Publicacion");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TarjetaDeCredito_Compra", Storage="_TarjetaDeCredito", ThisKey="idTarjeta", OtherKey="idTarjeta", IsForeignKey=true)]
+		public TarjetaDeCredito TarjetaDeCredito
+		{
+			get
+			{
+				return this._TarjetaDeCredito.Entity;
+			}
+			set
+			{
+				TarjetaDeCredito previousValue = this._TarjetaDeCredito.Entity;
+				if (((previousValue != value) 
+							|| (this._TarjetaDeCredito.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TarjetaDeCredito.Entity = null;
+						previousValue.Compra.Remove(this);
+					}
+					this._TarjetaDeCredito.Entity = value;
+					if ((value != null))
+					{
+						value.Compra.Add(this);
+						this._idTarjeta = value.idTarjeta;
+					}
+					else
+					{
+						this._idTarjeta = default(int);
+					}
+					this.SendPropertyChanged("TarjetaDeCredito");
 				}
 			}
 		}
@@ -2524,6 +2655,8 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private string _latitud;
 		
+		private EntitySet<Compra> _Compra;
+		
 		private EntityRef<Persona> _Persona;
 		
     #region Definiciones de métodos de extensibilidad
@@ -2554,6 +2687,7 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		public Direccion()
 		{
+			this._Compra = new EntitySet<Compra>(new Action<Compra>(this.attach_Compra), new Action<Compra>(this.detach_Compra));
 			this._Persona = default(EntityRef<Persona>);
 			OnCreated();
 		}
@@ -2600,7 +2734,6 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 
-        
         [Display(Name = "Núm. Ext.")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroExterior", DbType="VarChar(10)")]
 		public string numeroExterior
@@ -2622,7 +2755,6 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 
-        
         [Display(Name = "Num. Int.")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroInterior", DbType="VarChar(10)")]
 		public string numeroInterior
@@ -2734,7 +2866,6 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 
-
         [Display(Name = "Longitud")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longitud", DbType="VarChar(30)")]
 		public string longitud
@@ -2774,6 +2905,19 @@ namespace _2017_05_24ULSAVentas.Models
 					this.SendPropertyChanged("latitud");
 					this.OnlatitudChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Direccion_Compra", Storage="_Compra", ThisKey="idDireccion", OtherKey="idDireccion")]
+		public EntitySet<Compra> Compra
+		{
+			get
+			{
+				return this._Compra;
+			}
+			set
+			{
+				this._Compra.Assign(value);
 			}
 		}
 		
@@ -2830,11 +2974,18 @@ namespace _2017_05_24ULSAVentas.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            return calle + " " + numeroExterior + ", " + colonia + ", " + estado;
-        }
+		
+		private void attach_Compra(Compra entity)
+		{
+			this.SendPropertyChanging();
+			entity.Direccion = this;
+		}
+		
+		private void detach_Compra(Compra entity)
+		{
+			this.SendPropertyChanging();
+			entity.Direccion = null;
+		}
     }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Favorito")]
@@ -2843,13 +2994,11 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _idFavorito;
+		
 		private int _idUsuario;
 		
 		private int _idPublicacion;
-		
-		private System.DateTime _fechaDeAgregado;
-		
-		private int _idFavorito;
 		
 		private EntityRef<Usuario> _Usuario;
 		
@@ -2859,14 +3008,12 @@ namespace _2017_05_24ULSAVentas.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnidFavoritoChanging(int value);
+    partial void OnidFavoritoChanged();
     partial void OnidUsuarioChanging(int value);
     partial void OnidUsuarioChanged();
     partial void OnidPublicacionChanging(int value);
     partial void OnidPublicacionChanged();
-    partial void OnfechaDeAgregadoChanging(System.DateTime value);
-    partial void OnfechaDeAgregadoChanged();
-    partial void OnidFavoritoChanging(int value);
-    partial void OnidFavoritoChanged();
     #endregion
 		
 		public Favorito()
@@ -2874,6 +3021,26 @@ namespace _2017_05_24ULSAVentas.Models
 			this._Usuario = default(EntityRef<Usuario>);
 			this._Publicacion = default(EntityRef<Publicacion>);
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idFavorito", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idFavorito
+		{
+			get
+			{
+				return this._idFavorito;
+			}
+			set
+			{
+				if ((this._idFavorito != value))
+				{
+					this.OnidFavoritoChanging(value);
+					this.SendPropertyChanging();
+					this._idFavorito = value;
+					this.SendPropertyChanged("idFavorito");
+					this.OnidFavoritoChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
@@ -2920,46 +3087,6 @@ namespace _2017_05_24ULSAVentas.Models
 					this._idPublicacion = value;
 					this.SendPropertyChanged("idPublicacion");
 					this.OnidPublicacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaDeAgregado", DbType="DateTime NOT NULL")]
-		public System.DateTime fechaDeAgregado
-		{
-			get
-			{
-				return this._fechaDeAgregado;
-			}
-			set
-			{
-				if ((this._fechaDeAgregado != value))
-				{
-					this.OnfechaDeAgregadoChanging(value);
-					this.SendPropertyChanging();
-					this._fechaDeAgregado = value;
-					this.SendPropertyChanged("fechaDeAgregado");
-					this.OnfechaDeAgregadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idFavorito", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idFavorito
-		{
-			get
-			{
-				return this._idFavorito;
-			}
-			set
-			{
-				if ((this._idFavorito != value))
-				{
-					this.OnidFavoritoChanging(value);
-					this.SendPropertyChanging();
-					this._idFavorito = value;
-					this.SendPropertyChanged("idFavorito");
-					this.OnidFavoritoChanged();
 				}
 			}
 		}
@@ -3190,8 +3317,8 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaDeNacimiento", DbType="DateTime NOT NULL")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaDeNacimiento", DbType="DateTime NOT NULL")]
 		public System.DateTime fechaDeNacimiento
 		{
 			get
@@ -3375,6 +3502,8 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private int _idUsuario;
 		
+		private string _direccionImagen;
+		
 		private EntitySet<Comentario> _Comentario;
 		
 		private EntitySet<Compra> _Compra;
@@ -3399,6 +3528,8 @@ namespace _2017_05_24ULSAVentas.Models
     partial void OncantidadChanged();
     partial void OnidUsuarioChanging(int value);
     partial void OnidUsuarioChanged();
+    partial void OndireccionImagenChanging(string value);
+    partial void OndireccionImagenChanged();
     #endregion
 		
 		public Publicacion()
@@ -3530,6 +3661,26 @@ namespace _2017_05_24ULSAVentas.Models
 					this._idUsuario = value;
 					this.SendPropertyChanged("idUsuario");
 					this.OnidUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionImagen", DbType="VarChar(255)")]
+		public string direccionImagen
+		{
+			get
+			{
+				return this._direccionImagen;
+			}
+			set
+			{
+				if ((this._direccionImagen != value))
+				{
+					this.OndireccionImagenChanging(value);
+					this.SendPropertyChanging();
+					this._direccionImagen = value;
+					this.SendPropertyChanged("direccionImagen");
+					this.OndireccionImagenChanged();
 				}
 			}
 		}
@@ -3676,6 +3827,8 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		private int _idPersona;
 		
+		private EntitySet<Compra> _Compra;
+		
 		private EntityRef<Persona> _Persona;
 		
     #region Definiciones de métodos de extensibilidad
@@ -3692,6 +3845,7 @@ namespace _2017_05_24ULSAVentas.Models
 		
 		public TarjetaDeCredito()
 		{
+			this._Compra = new EntitySet<Compra>(new Action<Compra>(this.attach_Compra), new Action<Compra>(this.detach_Compra));
 			this._Persona = default(EntityRef<Persona>);
 			OnCreated();
 		}
@@ -3760,6 +3914,19 @@ namespace _2017_05_24ULSAVentas.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TarjetaDeCredito_Compra", Storage="_Compra", ThisKey="idTarjeta", OtherKey="idTarjeta")]
+		public EntitySet<Compra> Compra
+		{
+			get
+			{
+				return this._Compra;
+			}
+			set
+			{
+				this._Compra.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_TarjetaDeCredito", Storage="_Persona", ThisKey="idPersona", OtherKey="idPersona", IsForeignKey=true)]
 		public Persona Persona
 		{
@@ -3812,6 +3979,18 @@ namespace _2017_05_24ULSAVentas.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Compra(Compra entity)
+		{
+			this.SendPropertyChanging();
+			entity.TarjetaDeCredito = this;
+		}
+		
+		private void detach_Compra(Compra entity)
+		{
+			this.SendPropertyChanging();
+			entity.TarjetaDeCredito = null;
 		}
 	}
 	
