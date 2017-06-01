@@ -15,7 +15,7 @@ namespace _2017_05_24ULSAVentas.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private static ULSAVentasDataContext _db = new ULSAVentasDataContext();
+        private static ULSAVentasDataContext _db = ContextoEstatico.db;
         private static ULSAVentasDataContext db
         {
             get

@@ -1,10 +1,9 @@
-﻿using _2017_05_24ULSAVentas.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace _2017_05_24ULSAVentas.Controllers
+namespace _2017_05_24ULSAVentas.Models
 {
     public static class ContextoEstatico
     {

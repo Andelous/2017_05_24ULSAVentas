@@ -9,7 +9,7 @@ namespace _2017_05_24ULSAVentas.Controllers
 {
     public class PruebasController : Controller
     {
-        private static ULSAVentasDataContext _db = new ULSAVentasDataContext();
+        private static ULSAVentasDataContext _db = ContextoEstatico.db;
         private static ULSAVentasDataContext db
         {
             get
