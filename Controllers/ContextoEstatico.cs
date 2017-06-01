@@ -6,9 +6,16 @@ using System.Web;
 
 namespace _2017_05_24ULSAVentas.Controllers
 {
-    public class ContextoEstatico
+    public static class ContextoEstatico
     {
-
+        private static ULSAVentasDataContext _db = new ULSAVentasDataContext();
+        public static ULSAVentasDataContext db
+        {
+            get
+            {
+                return _db;
+            }
+        }
     }
 
     public static class MetodosExtension

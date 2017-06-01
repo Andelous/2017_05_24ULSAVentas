@@ -11,6 +11,8 @@ namespace _2017_05_24ULSAVentas.Controllers
         // GET: Publicacion
         public ActionResult Index()
         {
+            
+
             return View();
         }
     }
