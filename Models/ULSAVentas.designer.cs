@@ -2529,8 +2529,11 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionDeCorreo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Dirección de correo electrónico")]
+        [DataType(DataType.EmailAddress)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionDeCorreo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string direccionDeCorreo
 		{
 			get

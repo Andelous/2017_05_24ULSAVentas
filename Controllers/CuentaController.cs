@@ -77,14 +77,5 @@ namespace _2017_05_24ULSAVentas.Controllers
         {
             return View();
         }
-
-        // CORREOS
-        // Y sus acciones de agregar, modificar y eliminar
-        public ActionResult Correos()
-        {
-            Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
-
-            return PartialView(usuario.Persona.Correo.ToList());
-        }
     }
 }

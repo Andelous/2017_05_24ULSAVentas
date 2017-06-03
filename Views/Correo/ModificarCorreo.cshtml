@@ -1,0 +1,39 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Correo
+
+@{
+    bool? correoCorreoModificado = (bool?)TempData["correoCorreoModificado"];
+}
+
+@if (correoCorreoModificado == true)
+{
+    <div class="alert alert-success">
+        Correo modificado con éxito.
+    </div>
+}
+else if (correoCorreoModificado == false)
+{
+    <div class="alert alert-danger">
+        No se ha modificado el correo.
+    </div>
+}
+
+@using (Ajax.BeginForm("ModificarCorreo", "Correo", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarCorreo", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.HiddenFor(c => c.idCorreo)
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(c => c.direccionDeCorreo)
+                @Html.TextBoxFor(c => c.direccionDeCorreo, new { @class = "form-control", @type = "email" })
+            </div>
+        </div>
+        <div class="col-md-6"><input type="submit" class="btn btn-success btn-block" value="Agregar" /></div>
+    </div>
+}
+
+@{
+    TempData["correoCorreoModificado"] = null;
+}

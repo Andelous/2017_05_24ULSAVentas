@@ -1,0 +1,38 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Correo
+
+@{
+    bool? correoCorreoAgregado = (bool?)TempData["correoCorreoAgregado"];
+}
+
+@if (correoCorreoAgregado == true)
+{
+    <div class="alert alert-success">
+        Correo agregado con éxito.
+    </div>
+}
+else if (correoCorreoAgregado == false)
+{
+    <div class="alert alert-danger">
+        No se ha agregado el correo.
+    </div>
+}
+
+@using (Ajax.BeginForm("AgregarCorreo", "Correo", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAgregarCorreo", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(c => c.direccionDeCorreo)
+                @Html.TextBoxFor(c => c.direccionDeCorreo, new { @class = "form-control", @type="email" })
+            </div>
+        </div>
+        <div class="col-md-6"><input type="submit" class="btn btn-success btn-block" value="Agregar" /></div>
+    </div>
+}
+
+@{
+    TempData["correoCorreoAgregado"] = null;
+}

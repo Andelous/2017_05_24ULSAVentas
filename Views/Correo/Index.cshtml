@@ -1,28 +1,28 @@
 ﻿@using _2017_05_24ULSAVentas.Models
-@model List<Direccion>
+@model List<Correo>
 
 <script>
     function mostrarModalModificar() {
-        $("#modalModificarDireccion").modal("toggle");
+        $("#modalModificarCorreo").modal("toggle");
     }
 </script>
 
 <p>
-    <a data-toggle="modal" href="#modalAgregarDireccion"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
+    <a data-toggle="modal" href="#modalAgregarCorreo"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
 </p>
 
-<div class="modal fade" id="modalAgregarDireccion" role="dialog">
+<div class="modal fade" id="modalAgregarCorreo" role="dialog">
 
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Agregar direccion</h4>
+                <h4 class="modal-title">Agregar correo</h4>
             </div>
 
-            <div class="modal-body" id="divAgregarDireccion">
-                @Html.Action("AgregarDireccion", "Direccion")
+            <div class="modal-body" id="divAgregarCorreo">
+                @Html.Action("AgregarCorreo", "Correo")
             </div>
 
             <div class="modal-footer">
@@ -34,18 +34,18 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalModificarDireccion" role="dialog">
+<div class="modal fade" id="modalModificarCorreo" role="dialog">
 
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Modificar direccion</h4>
+                <h4 class="modal-title">Modificar correo</h4>
             </div>
 
             <div class="modal-body">
-                <div id="divModificarDireccion">
+                <div id="divModificarCorreo">
 
                 </div>
             </div>
@@ -70,33 +70,33 @@
                 Acciones
             </th>
         </tr>
-        @foreach (Direccion d in Model)
+        @foreach (Correo c in Model)
         {
             <tr>
                 <td>
-                    @d.getString()
+                    @c.direccionDeCorreo
                 </td>
                 <td>
-                    <a data-toggle="modal" href="#modalEliminarDireccion@(d.idDireccion)">Eliminar</a>
+                    <a data-toggle="modal" href="#modalEliminarCorreo@(c.idCorreo)">Eliminar</a>
                     &nbsp;|&nbsp;
-                    @Ajax.ActionLink("Modificar", "ModificarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarDireccion", HttpMethod = "GET" }, new { onclick="mostrarModalModificar()" })
+                    @Ajax.ActionLink("Modificar", "ModificarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarCorreo", HttpMethod = "GET" }, new { onclick = "mostrarModalModificar()" })
                 </td>
             </tr>
 
-            <div class="modal fade" id="modalEliminarDireccion@(d.idDireccion)" role="dialog">
+            <div class="modal fade" id="modalEliminarCorreo@(c.idCorreo)" role="dialog">
 
                 <div class="modal-dialog">
 
                     <div class="modal-content">
 
                         <div class="modal-header">
-                            <h4 class="modal-title">Eliminar direccion</h4>
+                            <h4 class="modal-title">Eliminar correo</h4>
                         </div>
 
-                        <div class="modal-body" id="divEliminarDireccion@(d.idDireccion)">
-                            <div class="alert alert-warning">Está seguro que quiere eliminar la dirección "@d.getString()"</div>
+                        <div class="modal-body" id="divEliminarCorreo@(c.idCorreo)">
+                            <div class="alert alert-warning">Está seguro que quiere eliminar el correo "@c.direccionDeCorreo"</div>
                             <div class="btn-group btn-group-justified">
-                                @Ajax.ActionLink("Sí", "EliminarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = ("divEliminarDireccion" + d.idDireccion) }, new { @class = "btn btn-danger" })
+                                @Ajax.ActionLink("Sí", "EliminarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = ("divEliminarCorreo" + c.idCorreo) }, new { @class = "btn btn-danger" })
                                 <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
                             </div>
                         </div>
@@ -110,5 +110,5 @@
 }
 else
 {
-    <div class="alert alert-info">Sin direcciones</div>
+    <div class="alert alert-info">Sin correos</div>
 }

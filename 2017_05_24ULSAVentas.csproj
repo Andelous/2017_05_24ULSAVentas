@@ -188,6 +188,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -308,11 +309,14 @@
     <Content Include="Views\Cuenta\Publicaciones.cshtml" />
     <Content Include="Views\Cuenta\Favoritos.cshtml" />
     <Content Include="Views\Cuenta\Compras.cshtml" />
-    <Content Include="Views\Cuenta\Correos.cshtml" />
     <Content Include="Views\Direccion\Index.cshtml" />
     <Content Include="Views\Direccion\AgregarDireccion.cshtml" />
     <Content Include="Views\Direccion\ModificarDireccion.cshtml" />
     <Content Include="Views\Direccion\EliminarDireccion.cshtml" />
+    <Content Include="Views\Correo\Index.cshtml" />
+    <Content Include="Views\Correo\AgregarCorreo.cshtml" />
+    <Content Include="Views\Correo\ModificarCorreo.cshtml" />
+    <Content Include="Views\Correo\EliminarCorreo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
