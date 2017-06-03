@@ -26,7 +26,6 @@ namespace _2017_05_24ULSAVentas.Controllers
             return View(db.Direccion.ToList());
         }
 
-        [Authorize]
         public ActionResult MapaParcial(string lat, string lng)
         {
             string[] s = { lat, lng };

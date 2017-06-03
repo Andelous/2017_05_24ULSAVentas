@@ -19,7 +19,7 @@ namespace _2017_05_24ULSAVentas.Models
 
     public static class MetodosExtension
     {
-        public static string ToString(this Direccion d)
+        public static string getString(this Direccion d)
         {
             return d.calle + " " + d.numeroExterior + ", " + d.colonia + ", " + d.estado;
         }

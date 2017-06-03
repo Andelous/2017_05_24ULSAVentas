@@ -15,8 +15,6 @@ namespace _2017_05_24ULSAVentas.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
