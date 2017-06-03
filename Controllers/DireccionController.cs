@@ -34,35 +34,74 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarDireccionPost(Direccion d)
+        public ActionResult AgregarDireccion(Direccion d)
         {
             if (ModelState.IsValid)
             {
-                Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+                try
+                {
+                    Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
 
-                d.idPersona = usuario.Persona.idPersona;
+                    d.idPersona = usuario.Persona.idPersona;
 
-                db.Direccion.InsertOnSubmit(d);
-                db.SubmitChanges();
+                    db.Direccion.InsertOnSubmit(d);
+
+                    db.SubmitChanges();
+                    TempData["direccionDireccionAgregada"] = true;
+                }
+                catch (Exception)
+                {
+                    TempData["direccionDireccionAgregada"] = false;
+                }
 
                 return PartialView();
             }
 
-            return PartialView("AgregarDireccion", d);
-        }
-
-        [HttpGet]
-        public ActionResult ModificarDireccion(int idDireccion)
-        {
-            Direccion d = db.Direccion.First(d1 => d1.idDireccion == idDireccion);
-
             return PartialView(d);
         }
 
-        [HttpPost]
-        public ActionResult ModificarDireccionPost(Direccion d)
+        [HttpGet]
+        public ActionResult ModificarDireccion(int? idDireccion = null)
         {
+            if (idDireccion != null)
+            {
+                Direccion d = db.Direccion.First(d1 => d1.idDireccion == idDireccion);
+                return PartialView(d);
+            }
+
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult ModificarDireccion(Direccion d)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Direccion d1 = db.Direccion.First(d2 => d2.idDireccion == d.idDireccion);
+
+                    d1.calle = d.calle;
+                    d1.codigoPostal = d.codigoPostal;
+                    d1.colonia = d.colonia;
+                    d1.estado = d.estado;
+                    d1.latitud = d.latitud;
+                    d1.longitud = d.longitud;
+                    d1.numeroExterior = d.numeroExterior;
+                    d1.numeroInterior = d.numeroInterior;
+                    
+                    db.SubmitChanges();
+                    TempData["direccionDireccionModificada"] = true;
+                }
+                catch (Exception)
+                {
+                    TempData["direccionDireccionModificada"] = false;
+                }
+
+                return PartialView();
+            }
+
+            return PartialView(d);
         }
 
         [HttpGet]
@@ -74,14 +113,14 @@ namespace _2017_05_24ULSAVentas.Controllers
                 db.Direccion.DeleteOnSubmit(d);
 
                 db.SubmitChanges();
-                TempData["direcccionDireccionEliminada"] = true;
+                TempData["direccionDireccionEliminada"] = true;
             }
             catch (Exception)
             {
-                TempData["direcccionDireccionEliminada"] = false;
+                TempData["direccionDireccionEliminada"] = false;
             }
 
-            return RedirectToAction("Informacion", "Cuenta");
+            return PartialView();
         }
     }
 }

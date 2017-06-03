@@ -7,7 +7,21 @@
 <head>
     <meta charset="utf-8">
     <title>@ViewBag.Title - ULSA Ventas</title>
+
     @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
 </head>
 
 <body style="font-family:Open Sans">
@@ -67,17 +81,6 @@
         </footer>
     </div>
 
-
-    @*Scripts.Render("~/bundles/modernizr")*@
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </body>
 
 </html>

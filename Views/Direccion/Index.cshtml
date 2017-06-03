@@ -1,30 +1,19 @@
 ﻿@using _2017_05_24ULSAVentas.Models
 @model List<Direccion>
 
-@{ 
-    bool? direcccionDireccionEliminada = (bool?)TempData["direcccionDireccionEliminada"];
-}
-
-@if (direcccionDireccionEliminada == true)
-{
-    <div class="alert alert-warning">
-        Dirección eliminada con éxito.
-    </div>
-}
-else if (direcccionDireccionEliminada == false)
-{
-    <div class="alert alert-danger">
-        La dirección no se eliminó.
-    </div>
-}
+<script>
+    function mostrarModalModificar() {
+        $("#modalModificarDireccion").modal("toggle");
+    }
+</script>
 
 <p>
-    <a data-toggle="modal" data-target="#modalAgregarDireccion"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
+    <a data-toggle="modal" href="#modalAgregarDireccion"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
 </p>
 
 <div class="modal fade" id="modalAgregarDireccion" role="dialog">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
@@ -32,7 +21,7 @@ else if (direcccionDireccionEliminada == false)
                 <h4 class="modal-title">Agregar direccion</h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body" id="divAgregarDireccion">
                 @Html.Action("AgregarDireccion", "Direccion")
             </div>
 
@@ -47,7 +36,7 @@ else if (direcccionDireccionEliminada == false)
 
 <div class="modal fade" id="modalModificarDireccion" role="dialog">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
@@ -88,9 +77,11 @@ else if (direcccionDireccionEliminada == false)
                     @d.getString()
                 </td>
                 <td>
-                    <a data-toggle="modal" data-target="#modalEliminarDireccion@(d.idDireccion)">Eliminar</a>
+                    <a data-toggle="modal" href="#modalEliminarDireccion@(d.idDireccion)">Eliminar</a>
                     &nbsp;|&nbsp;
-                    @Ajax.ActionLink("Modificar", "ModificarDireccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarDireccion" }, new { data_toggle = "modal", data_target = "#modalModificarDireccion" })
+                    <a data-toggle="modal" href="#modalModificarDireccion">Abrir modal</a>
+                    &nbsp;|&nbsp;
+                    @Ajax.ActionLink("Modificar", "ModificarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarDireccion", HttpMethod = "GET" }, new { onclick="mostrarModalModificar()" })
                 </td>
             </tr>
 
@@ -104,10 +95,10 @@ else if (direcccionDireccionEliminada == false)
                             <h4 class="modal-title">Eliminar direccion</h4>
                         </div>
 
-                        <div class="modal-body">
-                            <div class="alert alert-warning">Está seguro que quiere eliminar la dirección "@d"</div>
+                        <div class="modal-body" id="divEliminarDireccion@(d.idDireccion)">
+                            <div class="alert alert-warning">Está seguro que quiere eliminar la dirección "@d.getString()"</div>
                             <div class="btn-group btn-group-justified">
-                                <a href="@Url.Action("EliminarDireccion", "Direccion", new { idDireccion = d.idDireccion })" class="btn btn-danger">Sí</a>
+                                @Ajax.ActionLink("Sí", "EliminarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = ("divEliminarDireccion" + d.idDireccion) }, new { @class = "btn btn-danger" })
                                 <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
                             </div>
                         </div>
@@ -122,8 +113,4 @@ else if (direcccionDireccionEliminada == false)
 else
 {
     <div class="alert alert-info">Sin direcciones</div>
-}
-
-@{
-    TempData["direcccionDireccionEliminada"] = null;
 }
