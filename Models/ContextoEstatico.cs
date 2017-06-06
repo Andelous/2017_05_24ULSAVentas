@@ -23,5 +23,23 @@ namespace _2017_05_24ULSAVentas.Models
         {
             return d.calle + " " + d.numeroExterior + ", " + d.colonia + ", " + d.estado;
         }
+
+        public static bool igual(this Publicacion p, object o)
+        {
+            if (o != null)
+            {
+                if (o.GetType() == typeof(Publicacion))
+                {
+                    Publicacion p1 = (Publicacion)o;
+
+                    if (p.idPublicacion == p1.idPublicacion)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

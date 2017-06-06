@@ -1,5 +1,5 @@
 ﻿@{ 
-    string homePaginaActiva = ViewBag.homePaginaActiva;
+    string layoutPaginaActiva = ViewBag.layoutPaginaActiva;
 }
 
 <!DOCTYPE html>
@@ -40,15 +40,15 @@
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav">
-                    <li class="@(homePaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")" data-toggle="tooltip" data-placement="bottom" title="Inicio"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="@(homePaginaActiva == "nuevaPublicacion" ? "active":"")"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Publicar"><span class="glyphicon glyphicon-plus"></span></a></li>
+                    <li class="@(layoutPaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")" data-toggle="tooltip" data-placement="bottom" title="Inicio"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="@(layoutPaginaActiva == "publicar" ? "active":"")"><a href="@Url.Action("Publicar", "Publicaciones")" data-toggle="tooltip" data-placement="bottom" title="Publicar"><span class="glyphicon glyphicon-plus"></span></a></li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
 
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" action="@Url.Action("Buscar", "Publicaciones")">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Búsqueda" name="busqueda">
+                        <input type="text" class="form-control" placeholder="Búsqueda" name="q">
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                         </div>

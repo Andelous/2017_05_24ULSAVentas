@@ -1,0 +1,11 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Publicacion>
+
+@{
+    ViewBag.Title = "Búsqueda de publicaciones";
+    WebGrid wg = new WebGrid(Model);
+}
+
+<h2>Buscar</h2>
+
+@wg.GetHtml()

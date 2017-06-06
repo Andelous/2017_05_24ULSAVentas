@@ -3563,8 +3563,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_titulo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Título de publicación")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_titulo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string titulo
 		{
 			get
@@ -3583,8 +3585,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Descripción del producto")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
 		public string descripcion
 		{
 			get
@@ -3603,8 +3607,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Decimal(9,2) NOT NULL")]
+
+        [Required]
+        [Display(Name = "Precio ($)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Decimal(9,2) NOT NULL")]
 		public decimal precio
 		{
 			get
@@ -3623,8 +3629,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+
+        [Required]
+        [Display(Name = "Cantidad de stock inicial")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
 		public int cantidad
 		{
 			get
@@ -3667,8 +3675,9 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionImagen", DbType="VarChar(255)")]
+
+        [Display(Name = "Imagen del producto (URL, se recomienda una imagen cuadrada)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionImagen", DbType="VarChar(255)")]
 		public string direccionImagen
 		{
 			get

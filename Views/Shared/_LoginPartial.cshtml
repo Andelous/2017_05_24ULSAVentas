@@ -1,5 +1,5 @@
 ﻿@{ 
-    string homePaginaActiva = ViewBag.homePaginaActiva;
+    string layoutPaginaActiva = ViewBag.layoutPaginaActiva;
 }
 
 @using Microsoft.AspNet.Identity
@@ -11,7 +11,7 @@
 
             <div class="nav navbar-nav navbar-right" style="margin-right: 15px">
                 <div class="btn-group">
-                    <a href="@Url.Action("Index", "Cuenta")" title="Manage" class="btn btn-default navbar-btn @(homePaginaActiva == "cuenta" ? "active":"")">
+                    <a href="@Url.Action("Index", "Cuenta")" title="Manage" class="btn btn-default navbar-btn @(layoutPaginaActiva == "cuenta" ? "active":"")">
                         <strong>@(User.Identity.GetUserName())</strong> &nbsp;<span class="glyphicon glyphicon-user"></span>
                     </a>
                     <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger navbar-btn">
@@ -25,10 +25,10 @@
     {
         <div class="nav navbar-nav navbar-right" style="margin-right: 0px">
             <div class="btn-group">
-                <a href="@Url.Action("Register", "Account")" class="btn btn-success navbar-btn @(homePaginaActiva == "registrate" ? "active":"")">
+                <a href="@Url.Action("Register", "Account")" class="btn btn-success navbar-btn @(layoutPaginaActiva == "registrate" ? "active":"")">
                     Regístrate &nbsp;<span class="glyphicon glyphicon-user"></span>
                 </a>
-                <a href="@Url.Action("Login", "Account")" class="btn btn-primary navbar-btn @(homePaginaActiva == "iniciarSesion" ? "active":"")">
+                <a href="@Url.Action("Login", "Account")" class="btn btn-primary navbar-btn @(layoutPaginaActiva == "iniciarSesion" ? "active":"")">
                     Iniciar sesión &nbsp;<span class="glyphicon glyphicon-log-in"></span>
                 </a>
             </div>

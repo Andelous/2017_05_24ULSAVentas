@@ -18,22 +18,90 @@ namespace _2017_05_24ULSAVentas.Controllers
             }
         }
 
-        // GET: Publicaciones
-        public ActionResult Index()
+        [HttpGet]
+        [Authorize]
+        public ActionResult Publicar()
         {
-            Random r = new Random();
-            List<Publicacion> listaPublicaciones = new List<Publicacion>();
+            return View();
+        }
 
-            if (db.Publicacion.Count() > 0)
+        [HttpPost]
+        [Authorize]
+        public ActionResult Publicar(Publicacion p)
+        {
+            if (ModelState.IsValid)
             {
-                int id1 = r.Next(0, db.Publicacion.Count());
-                int id2 = r.Next(0, db.Publicacion.Count());
-                int id3 = r.Next(0, db.Publicacion.Count());
+                try
+                {
+                    Usuario u1 = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+                    p.idUsuario = u1.idUsuario;
 
-                listaPublicaciones.Add(db.Publicacion.First());
+                    db.Publicacion.InsertOnSubmit(p);
+                    db.SubmitChanges();
+
+                    TempData["publicacionesPublicacionCorrecta"] = true;
+                }
+                catch (Exception)
+                {
+                    TempData["publicacionesPublicacionCorrecta"] = false;
+                }
             }
 
-            return View();
+            return View(p);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult ModificarPublicacion(int? idPublicacion)
+        {
+            if (idPublicacion != null)
+            {
+                Publicacion p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
+                Usuario u1 = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+
+                if (p.idUsuario == u1.idUsuario)
+                    return View(p);
+            }
+
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult ModificarPublicacion(Publicacion p)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Publicacion p1 = db.Publicacion.First(p2 => p2.idPublicacion == p.idPublicacion);
+
+                    p1.cantidad = p.cantidad;
+                    p1.descripcion = p.descripcion;
+                    p1.direccionImagen = p.direccionImagen;
+                    p1.precio = p.precio;
+                    p1.titulo = p.titulo;
+
+                    db.SubmitChanges();
+
+                    TempData["publicacionesPublicacionActualizada"] = true;
+                }
+                catch (Exception)
+                {
+                    TempData["publicacionesPublicacionActualizada"] = false;
+                }
+            }
+
+            return View(p);
+        }
+
+        [HttpGet]
+        public ActionResult Buscar(string q)
+        {
+            List<Publicacion> publicaciones = db.Publicacion.Where(p => p.titulo.Contains(q)).ToList();
+
+            return View(publicaciones);
         }
     }
 }
