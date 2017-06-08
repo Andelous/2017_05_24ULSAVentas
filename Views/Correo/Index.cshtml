@@ -2,7 +2,7 @@
 @model List<Correo>
 
 <script>
-    function mostrarModalModificar() {
+    function mostrarModalModificarCorreo() {
         $("#modalModificarCorreo").modal("toggle");
     }
 </script>
@@ -79,7 +79,7 @@
                 <td>
                     <a data-toggle="modal" href="#modalEliminarCorreo@(c.idCorreo)">Eliminar</a>
                     &nbsp;|&nbsp;
-                    @Ajax.ActionLink("Modificar", "ModificarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarCorreo", HttpMethod = "GET" }, new { onclick = "mostrarModalModificar()" })
+                    @Ajax.ActionLink("Modificar", "ModificarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarCorreo", HttpMethod = "GET" }, new { onclick = "mostrarModalModificarCorreo()" })
                 </td>
             </tr>
 

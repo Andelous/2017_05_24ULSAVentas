@@ -1,4 +1,5 @@
 ﻿using _2017_05_24ULSAVentas.Models;
+using _2017_05_24ULSAVentas.ServicioLocal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,22 @@ namespace _2017_05_24ULSAVentas.Controllers
         {
             string[] s = { lat, lng };
             return PartialView(s);
+        }
+
+        [HttpGet]
+        public ActionResult ConsumirServicio()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConsumirServicio(int idPublicacion, int cantidad)
+        {
+            ServicioExamenSoapClient cliente = new ServicioExamenSoapClient();
+
+            double d = cliente.calcularTotal(idPublicacion, cantidad);
+
+            return View(d);
         }
     }
 }

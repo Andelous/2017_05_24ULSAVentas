@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DevolverCadena">
+        <s:complexType />
+      </s:element>
+      <s:element name="DevolverCadenaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DevolverCadenaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularTotal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idPublicacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularTotalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="calcularTotalResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaModelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coincidencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaModeloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listaModeloResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DevolverCadenaSoapIn">
+    <wsdl:part name="parameters" element="tns:DevolverCadena" />
+  </wsdl:message>
+  <wsdl:message name="DevolverCadenaSoapOut">
+    <wsdl:part name="parameters" element="tns:DevolverCadenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcularTotalSoapIn">
+    <wsdl:part name="parameters" element="tns:calcularTotal" />
+  </wsdl:message>
+  <wsdl:message name="calcularTotalSoapOut">
+    <wsdl:part name="parameters" element="tns:calcularTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:listaModelo" />
+  </wsdl:message>
+  <wsdl:message name="listaModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:listaModeloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioExamenSoap">
+    <wsdl:operation name="DevolverCadena">
+      <wsdl:input message="tns:DevolverCadenaSoapIn" />
+      <wsdl:output message="tns:DevolverCadenaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcularTotal">
+      <wsdl:input message="tns:calcularTotalSoapIn" />
+      <wsdl:output message="tns:calcularTotalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listaModelo">
+      <wsdl:input message="tns:listaModeloSoapIn" />
+      <wsdl:output message="tns:listaModeloSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioExamenSoap" type="tns:ServicioExamenSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DevolverCadena">
+      <soap:operation soapAction="http://tempuri.org/DevolverCadena" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularTotal">
+      <soap:operation soapAction="http://tempuri.org/calcularTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaModelo">
+      <soap:operation soapAction="http://tempuri.org/listaModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioExamenSoap12" type="tns:ServicioExamenSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DevolverCadena">
+      <soap12:operation soapAction="http://tempuri.org/DevolverCadena" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularTotal">
+      <soap12:operation soapAction="http://tempuri.org/calcularTotal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaModelo">
+      <soap12:operation soapAction="http://tempuri.org/listaModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioExamen">
+    <wsdl:port name="ServicioExamenSoap" binding="tns:ServicioExamenSoap">
+      <soap:address location="http://localhost/2017_05_24ULSAVentas/WebServices/ServicioExamen.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioExamenSoap12" binding="tns:ServicioExamenSoap12">
+      <soap12:address location="http://localhost/2017_05_24ULSAVentas/WebServices/ServicioExamen.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

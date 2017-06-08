@@ -107,6 +107,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -187,6 +189,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Connected Services\ServicioLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
@@ -219,6 +226,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ServicioLocal\ServicioExamen.disco" />
+    <None Include="Connected Services\ServicioLocal\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioLocal\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -234,6 +248,16 @@
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="WebServices\ServicioExamen.asmx" />
+    <None Include="Connected Services\ServicioLocal\ServicioExamen.wsdl" />
+    <Content Include="Connected Services\ServicioLocal\_2017_05_24ULSAVentas.ServicioLocal.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioLocal\_2017_05_24ULSAVentas.ServicioLocal.DevolverCadenaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioLocal\_2017_05_24ULSAVentas.ServicioLocal.listaModeloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -320,6 +344,7 @@
     <Content Include="Views\Publicaciones\Publicar.cshtml" />
     <Content Include="Views\Publicaciones\Buscar.cshtml" />
     <Content Include="Views\Publicaciones\ModificarPublicacion.cshtml" />
+    <Content Include="Views\Pruebas\ConsumirServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +364,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicioLocal\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

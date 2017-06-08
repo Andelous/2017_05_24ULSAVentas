@@ -1,0 +1,30 @@
+﻿@model double?
+@{
+    ViewBag.Title = "Consumir servicio";
+}
+
+<h2 class="page-header">Consumir servicio. <small>Cotización de producto</small></h2>
+
+<div class="row">
+    @using (Html.BeginForm("ConsumirServicio", "Pruebas", FormMethod.Post, new { @class = "col-md-6"}))
+    {
+        <div class="form-group">
+            <label class="label label-info">idPublicacion</label>
+            <input type="text" name="idPublicacion" />
+        </div>
+
+        <div class="form-group">
+            <label class="label label-info">Cantidad</label>
+            <input type="number" name="cantidad" min="0" step="1" />
+        </div>
+
+        <input type="submit" value="Consultar" />
+    }
+
+    <div class="col-md-6">
+        <h3>
+            Costo: $@(Model != null ? String.Format("{0:n}", (double)Model) : "0.00")
+        </h3>
+    </div>
+</div>
+
