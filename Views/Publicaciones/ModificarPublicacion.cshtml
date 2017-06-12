@@ -12,11 +12,15 @@
 
 @if (publicacionesPublicacionActualizada == true)
 {
-    <div class="alert alert-success">Publicación actualizada con éxito.</div>
+    <div class="alert alert-success">
+        Publicación actualizada con éxito.
+    </div>
 }
 else if (publicacionesPublicacionActualizada == false)
 {
-    <div class="alert alert-danger">Error al actualizar la publicación.</div>
+    <div class="alert alert-danger">
+        Error al actualizar la publicación.
+    </div>
 }
 
 @using (Html.BeginForm())

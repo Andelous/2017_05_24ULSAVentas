@@ -56,15 +56,21 @@ namespace _2017_05_24ULSAVentas.Controllers
         {
             if (idPublicacion != null)
             {
-                Publicacion p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
-                Usuario u1 = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+                try
+                {
+                    Publicacion p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
+                    Usuario u1 = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
 
-                if (p.idUsuario == u1.idUsuario)
-                    return View(p);
+                    if (p.idUsuario == u1.idUsuario)
+                        return View(p);
+                }
+                catch (Exception)
+                {
+                    
+                }
             }
 
-            return RedirectToAction("Index", "Home");
-
+            return RedirectToAction("Publicaciones", "Cuenta");
         }
 
         [HttpPost]
@@ -90,16 +96,61 @@ namespace _2017_05_24ULSAVentas.Controllers
                 catch (Exception)
                 {
                     TempData["publicacionesPublicacionActualizada"] = false;
+                    return View(p);
+                }
+
+                return RedirectToAction("Publicaciones", "Cuenta");
+            }
+            else
+            {
+                return View(p);
+            }
+        }
+
+        public ActionResult Eliminar(int? idPublicacion)
+        {
+            if (idPublicacion != null)
+            {
+                try
+                {
+                    Usuario u = db.Usuario.First(u1 => u1.usuario1 == User.Identity.Name);
+                    Publicacion p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
+
+                    if (p.idUsuario == u.idUsuario)
+                    {
+                        db.Publicacion.DeleteOnSubmit(p);
+                        db.SubmitChanges();
+
+                        TempData["publicacionesPublicacionEliminada"] = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    TempData["publicacionesPublicacionEliminada"] = false;
                 }
             }
 
-            return View(p);
+            return RedirectToAction("Publicaciones", "Cuenta");
         }
 
         [HttpGet]
         public ActionResult Buscar(string q)
         {
-            List<Publicacion> publicaciones = db.Publicacion.Where(p => p.titulo.Contains(q)).ToList();
+            if (q == null || q.Trim() == "")
+            {
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+            List<Publicacion> publicaciones = new List<Publicacion>();
+
+            try
+            {
+                publicaciones = db.Publicacion.Where(p => p.titulo.Contains(q)).ToList();
+            }
+            catch (Exception)
+            {
+                
+            }
 
             return View(publicaciones);
         }

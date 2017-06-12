@@ -3631,7 +3631,7 @@ namespace _2017_05_24ULSAVentas.Models
 		}
 
         [Required]
-        [Display(Name = "Cantidad de stock inicial")]
+        [Display(Name = "Cantidad de stock")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
 		public int cantidad
 		{

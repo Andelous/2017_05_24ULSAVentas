@@ -22,21 +22,32 @@ namespace _2017_05_24ULSAVentas.Controllers
             Random r = new Random();
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
 
-            if (db.Publicacion.Count() > 0)
+            try
             {
-                int maximo = db.Publicacion.Max(p => p.idPublicacion) + 1;
+                if (db.Publicacion.Count() > 0)
+                {
+                    int maximo = db.Publicacion.Max(p => p.idPublicacion) + 1;
 
-                int id1 = r.Next(1, maximo);
-                int id2 = r.Next(1, maximo);
-                int id3 = r.Next(1, maximo);
+                    while (listaPublicaciones.Count < 3)
+                    {
+                        try
+                        {
+                            int id1 = r.Next(1, maximo);
 
-                Publicacion p1 = db.Publicacion.First(p => p.idPublicacion == id1);
-                Publicacion p2 = db.Publicacion.First(p => p.idPublicacion == id2);
-                Publicacion p3 = db.Publicacion.First(p => p.idPublicacion == id3);
+                            Publicacion p1 = db.Publicacion.First(p => p.idPublicacion == id1);
 
-                listaPublicaciones.Add(p1);
-                listaPublicaciones.Add(p2);
-                listaPublicaciones.Add(p3);
+                            listaPublicaciones.Add(p1);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
             }
 
             return View(listaPublicaciones);

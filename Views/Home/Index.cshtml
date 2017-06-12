@@ -26,15 +26,22 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <img class="img-circle img-responsive" src="@p.direccionImagen" />
+                        <img class="img-thumbnail img-responsive" src="@p.direccionImagen" />
                     </div>
 
                     <div class="col-md-6">
-                        <h5 class="page-header">
-                            <a class="text-primary">@p.titulo</a>
-                        </h5>
+                        <h4 class="page-header">
+                            <a class="text-primary">@p.titulo</a> <span class="badge">$@string.Format("{0:n}", p.precio)</span>
+                        </h4>
                         <p class="text-muted">
-                            @p.descripcion
+                            @if (p.descripcion.Length > 50)
+                            {
+                                @p.descripcion.Substring(0, 50)@:...
+                            }
+                            else
+                            {
+                                @p.descripcion
+                            }
                         </p>
                     </div>
 

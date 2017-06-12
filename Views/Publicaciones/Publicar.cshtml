@@ -33,12 +33,12 @@ else if (publicacionesPublicacionCorrecta == false)
 
             <div class="form-group">
                 @Html.LabelFor(p => p.precio)
-                @Html.TextBoxFor(p => p.precio, new { @class = "form-control", @type ="number", value="0.00", min="0", step="any" })
+                @Html.TextBoxFor(p => p.precio, new { @class = "form-control", @type ="number", min="0", step="any", value = "0.00" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(p => p.cantidad)
-                @Html.TextBoxFor(p => p.cantidad, new { @class = "form-control", @type = "number", value = "5", min = "1", step = "1" })
+                @Html.TextBoxFor(p => p.cantidad, new { @class = "form-control", @type = "number", min = "1", step = "1", value = "5" })
             </div>
         </div>
 

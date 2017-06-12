@@ -65,7 +65,10 @@ namespace _2017_05_24ULSAVentas.Controllers
 
         public ActionResult Publicaciones()
         {
-            return View();
+            Usuario usuario = db.Usuario.First(u => u.usuario1 == User.Identity.Name);
+            List<Publicacion> publicaciones = db.Publicacion.Where(p => p.idUsuario == usuario.idUsuario).ToList();
+
+            return View(publicaciones);
         }
 
         public ActionResult Favoritos()
