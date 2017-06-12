@@ -152,6 +152,8 @@ namespace _2017_05_24ULSAVentas.Controllers
                 
             }
 
+            TempData["criterioDeBusqueda"] = q;
+
             return View(publicaciones);
         }
     }

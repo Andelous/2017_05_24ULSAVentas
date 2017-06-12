@@ -3,9 +3,42 @@
 
 @{
     ViewBag.Title = "Búsqueda de publicaciones";
-    WebGrid wg = new WebGrid(Model);
 }
 
-<h2>Buscar</h2>
+<h3 class="page-header">Búsqueda de "@TempData["criterioDeBusqueda"]" (@Model.Count resultados)</h3>
 
-@wg.GetHtml()
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Publicacion p in Model)
+    {
+        <div class="row">
+
+            <div class="col-md-2">
+                <img class="img-thumbnail img-responsive" src="@p.direccionImagen" />
+            </div>
+            <div class="col-md-10">
+                <h4 class="page-header">
+                    <a class="text-primary">@p.titulo</a> <span class="badge">$@string.Format("{0:n}", p.precio)</span>
+                </h4>
+                <p class="text-muted text-justify">
+                    @if (p.descripcion.Length > 400)
+                    {
+                        @p.descripcion.Substring(0, 400)@:...
+                    }
+                    else
+                    {
+                        @p.descripcion
+                    }
+                </p>
+            </div>
+
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        Lo sentimos, sus criterios de búsqueda no produjeron algún resultado.
+    </div>
+}

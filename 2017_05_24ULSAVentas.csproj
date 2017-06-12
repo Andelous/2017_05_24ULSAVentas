@@ -345,10 +345,11 @@
     <Content Include="Views\Publicaciones\Buscar.cshtml" />
     <Content Include="Views\Publicaciones\ModificarPublicacion.cshtml" />
     <Content Include="Views\Pruebas\ConsumirServicio.cshtml" />
+    <Content Include="Views\Publicacion\Descripcion.cshtml" />
+    <Content Include="Views\Publicacion\Imagen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Publicacion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
