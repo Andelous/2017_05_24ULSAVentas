@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace _2017_05_24ULSAVentas.Controllers
 {
+    [Authorize]
     public class ComentarioController : Controller
     {
         private static ULSAVentasDataContext _db = ContextoEstatico.db;
@@ -25,6 +26,7 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult VerComentarios(int idPublicacion)
         {
             Publicacion p = null;
@@ -44,7 +46,6 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult VerComentarios(string comentario, int idPublicacion)
         {
             try
@@ -66,6 +67,7 @@ namespace _2017_05_24ULSAVentas.Controllers
             catch (Exception)
             {
                 TempData["comentarioComentarioAgregado"] = false;
+                throw;
             }
 
             return RedirectToAction("VerPublicacion", "Publicaciones", new { idPublicacion = idPublicacion});

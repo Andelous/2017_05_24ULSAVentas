@@ -77,7 +77,8 @@ namespace _2017_05_24ULSAVentas.Controllers
 
             try
             {
-                List<Favorito> comodin = db.Favorito.ToList();
+                Usuario u = db.Usuario.First(u1 => u1.usuario1 == User.Identity.Name);
+                List<Favorito> comodin = db.Favorito.Where(f => f.idUsuario == u.idUsuario).ToList();
 
                 foreach (Favorito f in comodin)
                 {
