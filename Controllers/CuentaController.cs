@@ -73,7 +73,23 @@ namespace _2017_05_24ULSAVentas.Controllers
 
         public ActionResult Favoritos()
         {
-            return View();
+            List<Publicacion> listaFavoritos = new List<Publicacion>();
+
+            try
+            {
+                List<Favorito> comodin = db.Favorito.ToList();
+
+                foreach (Favorito f in comodin)
+                {
+                    listaFavoritos.Add(db.Publicacion.First(p => p.idPublicacion == f.idPublicacion));
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return View(listaFavoritos);
         }
 
         public ActionResult Compras()

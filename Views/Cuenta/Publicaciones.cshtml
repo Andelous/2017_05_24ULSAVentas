@@ -8,7 +8,10 @@
 
     bool? publicacionesPublicacionEliminada = (bool?)TempData["publicacionesPublicacionEliminada"];
     bool? publicacionesPublicacionActualizada = (bool?)TempData["publicacionesPublicacionActualizada"];
+    bool? publicacionesPublicacionCorrecta = (bool?)TempData["publicacionesPublicacionCorrecta"];
 }
+<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> publicaciones</small>
+<hr />
 
 @if (publicacionesPublicacionEliminada == true)
 {
@@ -36,10 +39,49 @@ else if (publicacionesPublicacionActualizada == false)
     </div>
 }
 
+@if (publicacionesPublicacionCorrecta == true)
+{
+    <div class="alert alert-success">
+        Se publicó el artículo con éxito.
+    </div>
+}
+else if (publicacionesPublicacionCorrecta == false)
+{
+    <div class="alert alert-danger">
+        No se publicó el artículo.
+    </div>
+}
+
 @if (Model != null && Model.Count > 0)
 {
     foreach (Publicacion p in Model)
     {
+        <div class="modal fade" id="modalEliminarPublicacion@(p.idPublicacion)" role="dialog">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar publicación</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="alert alert-warning">¿Está seguro que quiere eliminar la publicación "@p.titulo"?</div>
+
+                        <div class="btn-group btn-group-justified">
+                            <a class="btn btn-danger" href="@Url.Action("Eliminar", "Publicaciones", new { idPublicacion = p.idPublicacion })">Sí</a>
+                            <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
         <div class="row">
 
             <div class="col-md-3">
@@ -52,38 +94,9 @@ else if (publicacionesPublicacionActualizada == false)
             <div class="col-md-3">
                 <h4 class="page-header">Acciones</h4>
 
-                <div class="btn-group btn-group-vertical btn-block">
+                <div class="btn-group-vertical btn-block">
                     <a class="btn btn-default" href="@Url.Action("ModificarPublicacion", "Publicaciones", new { idPublicacion = p.idPublicacion })"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
-                    <a class="btn btn-default" data-toggle="modal" href="#modalEliminarPublicacion@(p.idPublicacion)"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
-
-
-
-                    <div class="modal fade" id="modalEliminarPublicacion@(p.idPublicacion)" role="dialog">
-
-                        <div class="modal-dialog">
-
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Eliminar direccion</h4>
-                                </div>
-
-                                <div class="modal-body" id="divEliminarPublicacion@(p.idPublicacion)">
-                                    
-                                    <div class="alert alert-warning">Está seguro que quiere eliminar la publicación "@p.titulo"</div>
-
-                                    <div class="btn-group btn-group-justified">
-                                        <a class="btn btn-danger" href="@Url.Action("Eliminar", "Publicaciones", new { idPublicacion = p.idPublicacion })">Sí</a>
-                                        <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <a class="btn btn-default" data-toggle="modal" href="#modalEliminarPublicacion@(p.idPublicacion)"><div class="text-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</div></a>
                 </div>
             </div>
         </div>

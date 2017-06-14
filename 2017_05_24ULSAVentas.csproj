@@ -199,6 +199,7 @@
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\FavoritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PruebasController.cs" />
@@ -348,11 +349,12 @@
     <Content Include="Views\Pruebas\ConsumirServicio.cshtml" />
     <Content Include="Views\Publicacion\Descripcion.cshtml" />
     <Content Include="Views\Publicacion\Imagen.cshtml" />
-    <Content Include="Views\Publicaciones\Ver.cshtml" />
+    <Content Include="Views\Publicaciones\VerPublicacion.cshtml" />
     <Content Include="Views\Comentario\VerComentarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Favorito\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

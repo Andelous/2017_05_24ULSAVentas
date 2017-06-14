@@ -1,6 +1,11 @@
-﻿
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Compra>
+
 @{
     Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
     ViewBag.Title = "Compras";
     ViewBag.cuentaPaginaActiva = "compras";
 }
+
+<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> compras</small>
+<hr />

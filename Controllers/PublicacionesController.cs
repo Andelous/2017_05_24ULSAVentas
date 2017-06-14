@@ -44,10 +44,15 @@ namespace _2017_05_24ULSAVentas.Controllers
                 catch (Exception)
                 {
                     TempData["publicacionesPublicacionCorrecta"] = false;
+                    return View(p);
                 }
-            }
 
-            return View(p);
+                return RedirectToAction("Publicaciones", "Cuenta");
+            }
+            else
+            {
+                return View(p);
+            }
         }
 
         [HttpGet]
@@ -159,12 +164,13 @@ namespace _2017_05_24ULSAVentas.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Ver(int? idPublicacion)
+        public ActionResult VerPublicacion(int? idPublicacion)
         {
             if (idPublicacion == null)
                 return RedirectToAction("Index", "Home");
 
             Publicacion p = null;
+            Direccion d = null;
 
             try
             {
@@ -174,6 +180,17 @@ namespace _2017_05_24ULSAVentas.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            try
+            {
+                d = p.Usuario.Persona.Direccion.First(d1 => true);
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            TempData["publicacionesDireccion"] = d;
 
             return View(p);
         }

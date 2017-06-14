@@ -33,7 +33,7 @@ namespace _2017_05_24ULSAVentas.Controllers
             try
             {
                 p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
-                comentarios = db.Comentario.Where(c => c.idPublicacion == p.idPublicacion).ToList();
+                comentarios = db.Comentario.Where(c => c.idPublicacion == p.idPublicacion).OrderByDescending(c => c.idComentario).ToList();
             }
             catch (Exception)
             {
@@ -68,7 +68,7 @@ namespace _2017_05_24ULSAVentas.Controllers
                 TempData["comentarioComentarioAgregado"] = false;
             }
 
-            return RedirectToAction("Ver", "Publicaciones", new { idPublicacion = idPublicacion});
+            return RedirectToAction("VerPublicacion", "Publicaciones", new { idPublicacion = idPublicacion});
         }
     }
 }

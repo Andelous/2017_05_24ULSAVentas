@@ -1,7 +1,7 @@
 ﻿@using _2017_05_24ULSAVentas.Models
 @model List<Comentario>
 
-<h3 class="page-header">Comentarios</h3>
+<h3 class="page-header">Comentarios@(Model != null ? " (" + Model.Count + ")" : "0")</h3>
 <p>
     @if (Model != null && Model.Count > 0)
     {
@@ -24,7 +24,7 @@
     else
     {
         <div class="alert alert-info">
-            Parece que esta publicación no tiene comentarios aún ¡Sé el primero, soyez le premier!
+            Parece que esta publicación no tiene comentarios aún ¡Sé el primero, <strong>soyez le premier</strong>!
         </div>
     }
 </p>

@@ -1,6 +1,83 @@
-﻿
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Publicacion>
+
 @{
     Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
     ViewBag.Title = "Favoritos";
     ViewBag.cuentaPaginaActiva = "favoritos";
+
+    bool? favoritoFavoritoEliminado = (bool?)TempData["favoritoFavoritoEliminado"];
+}
+
+<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> favoritos</small>
+<hr />
+
+@if (favoritoFavoritoEliminado == true)
+{
+    <div class="alert alert-success">
+        Favorito eliminado.
+    </div>
+}
+else if (favoritoFavoritoEliminado == false)
+{
+    <div class="alert alert-danger">
+        No se ha podido eliminar el favorito.
+    </div>
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Publicacion p in Model)
+    {
+        <div class="modal fade" id="modalEliminarFavorito@(p.idPublicacion)" role="dialog">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar favorito</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="alert alert-warning">¿Está seguro que quiere eliminar la publicación "@p.titulo" de sus favoritos?</div>
+
+                        <div class="btn-group btn-group-justified">
+                            <a class="btn btn-danger" href="@Url.Action("Eliminar", "Favorito", new { idPublicacion = p.idPublicacion })">Sí</a>
+                            <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", p)
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", p, new ViewDataDictionary { { "longitudCadena", 200 } })
+            </div>
+
+            <div class="col-md-3">
+                <h4 class="page-header">Acciones</h4>
+
+                <div class="btn-group-vertical btn-block">
+                    <a class="btn btn-default" data-toggle="modal" href="#modalEliminarFavorito@(p.idPublicacion)"><div class="text-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</div></a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        Parece que aún no agregas ningún artículo a tus favoritos.
+    </div>
 }

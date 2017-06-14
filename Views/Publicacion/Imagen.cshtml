@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-6 text-right">
-        <span class="label @(Model.cantidad > 3 ? "label-primary" : Model.cantidad > 1 ? "label-success" : "label-warning")">
+        <span class="label @(Model.cantidad > 6 ? "label-primary" : Model.cantidad > 3 ? "label-success" : Model.cantidad == 0 ? "label-danger" : "label-warning")">
             <small><span class="glyphicon glyphicon-tags"></span></small>&nbsp;&nbsp;@Model.cantidad uds.
         </span>
     </div>
