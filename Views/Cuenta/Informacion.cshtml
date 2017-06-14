@@ -45,17 +45,20 @@ else if (cuentaPersonaModificada == false)
 }
 
 <hr />
-<h3 class="page-header"><span class="glyphicon glyphicon-map-marker"></span> Direcciones</h3>
 
-<div>
-    @Html.Action("Index", "Direccion")
+<h3>Administrar</h3>
+
+<div class="btn-group btn-group-justified">
+    @Ajax.ActionLink("Direcciones", "Index", "Direccion", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink("Correos", "Index", "Correo", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink("Tarjetas", "Index", "Tarjeta", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
+    <a class="btn btn-primary">
+        <span class="glyphicon glyphicon-phone"></span> Teléfonos
+    </a>
 </div>
 
-<hr />
-<h3 class="page-header"><span class="glyphicon glyphicon-envelope"></span> Correos</h3>
+<div id="divAdministracion">
 
-<div>
-    @Html.Action("Index", "Correo")
 </div>
 
 @{ 

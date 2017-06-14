@@ -204,6 +204,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PruebasController.cs" />
     <Compile Include="Controllers\PublicacionesController.cs" />
+    <Compile Include="Controllers\TarjetaController.cs" />
+    <Compile Include="Controllers\TelefonoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,10 +353,15 @@
     <Content Include="Views\Publicacion\Imagen.cshtml" />
     <Content Include="Views\Publicaciones\VerPublicacion.cshtml" />
     <Content Include="Views\Comentario\VerComentarios.cshtml" />
+    <Content Include="Views\Tarjeta\Index.cshtml" />
+    <Content Include="Views\Tarjeta\AgregarTarjeta.cshtml" />
+    <Content Include="Views\Tarjeta\ModificarTarjeta.cshtml" />
+    <Content Include="Views\Tarjeta\EliminarTarjeta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Favorito\" />
+    <Folder Include="Views\Telefono\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,38 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model TarjetaDeCredito
+
+@{
+    bool? tarjetaTarjetaAgregada = (bool?)TempData["tarjetaTarjetaAgregada"];
+}
+
+@if (tarjetaTarjetaAgregada == true)
+{
+    <div class="alert alert-success">
+        Tarjeta agregada con éxito.
+    </div>
+}
+else if (tarjetaTarjetaAgregada == false)
+{
+    <div class="alert alert-danger">
+        No se ha agregado la tarjeta.
+    </div>
+}
+
+@using (Ajax.BeginForm("AgregarTarjeta", "Tarjeta", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAgregarTarjeta", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(t => t.numeroDeTarjeta)
+                @Html.TextBoxFor(t => t.numeroDeTarjeta, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6"><input type="submit" class="btn btn-success btn-block" value="Agregar" /></div>
+    </div>
+}
+
+@{
+    TempData["tarjetaTarjetaAgregada"] = null;
+}
