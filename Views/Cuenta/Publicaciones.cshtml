@@ -43,22 +43,10 @@ else if (publicacionesPublicacionActualizada == false)
         <div class="row">
 
             <div class="col-md-3">
-                <img class="img-thumbnail img-responsive" src="@p.direccionImagen" />
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", p)
             </div>
             <div class="col-md-6">
-                <h4 class="page-header">
-                    <a class="text-primary">@p.titulo</a> <span class="badge">$@string.Format("{0:n}", p.precio)</span>
-                </h4>
-                <p class="text-muted text-justify">
-                    @if (p.descripcion.Length > 200)
-                    {
-                        @p.descripcion.Substring(0, 200)@:...
-                    }
-                    else
-                    {
-                        @p.descripcion
-                    }
-                </p>
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", p, new ViewDataDictionary { { "longitudCadena", 200 } })
             </div>
             
             <div class="col-md-3">

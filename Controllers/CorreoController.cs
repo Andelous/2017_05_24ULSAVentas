@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace _2017_05_24ULSAVentas.Controllers
 {
+    [Authorize]
     public class CorreoController : Controller
     {
         private static ULSAVentasDataContext _db = ContextoEstatico.db;

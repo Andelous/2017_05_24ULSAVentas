@@ -1,0 +1,53 @@
+﻿@using _2017_05_24ULSAVentas.Models
+
+@model Publicacion
+
+@{
+    ViewBag.Title = Model.titulo;
+    Session["idPublicacion"] = Model.idPublicacion;
+    bool? comentarioComentarioAgregado = (bool?)TempData["comentarioComentarioAgregado"];
+}
+
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <h2 class="page-header">@Model.titulo</h2>
+
+        @if (comentarioComentarioAgregado == true)
+        {
+            <div class="alert alert-success">
+                ¡Comentaste con éxito!
+            </div>
+        }
+        else if (comentarioComentarioAgregado == false)
+        {
+            <div class="alert alert-success">
+                No pudimos agregar tu comentario.
+            </div>
+        }
+
+        <div class="row">
+
+            <div class="col-md-4 text-center">
+                <img src="@Model.direccionImagen" class="img-thumbnail img-responsive" />
+            </div>
+
+            <div class="col-md-8">
+                <h3>Opciones de compra</h3>
+                <hr />
+            </div>
+
+            <div class="col-md-12">
+                <h3 class="page-header">Descripción</h3>
+                <p>
+                    @Model.descripcion
+                </p>
+            </div>
+
+            <div class="col-md-12">
+                @Html.Action("VerComentarios", "Comentario", new { idPublicacion = Model.idPublicacion })
+            </div>
+
+        </div>
+
+    </div>
+</div>

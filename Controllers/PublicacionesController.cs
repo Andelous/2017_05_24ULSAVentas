@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Linq;
 
 namespace _2017_05_24ULSAVentas.Controllers
 {
+    [Authorize]
     public class PublicacionesController : Controller
     {
         private static ULSAVentasDataContext _db = ContextoEstatico.db;
@@ -19,14 +21,12 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult Publicar()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult Publicar(Publicacion p)
         {
             if (ModelState.IsValid)
@@ -51,7 +51,6 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult ModificarPublicacion(int? idPublicacion)
         {
             if (idPublicacion != null)
@@ -74,7 +73,6 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult ModificarPublicacion(Publicacion p)
         {
             if (ModelState.IsValid)
@@ -107,6 +105,7 @@ namespace _2017_05_24ULSAVentas.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Eliminar(int? idPublicacion)
         {
             if (idPublicacion != null)
@@ -134,6 +133,7 @@ namespace _2017_05_24ULSAVentas.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Buscar(string q)
         {
             if (q == null || q.Trim() == "")
@@ -145,7 +145,7 @@ namespace _2017_05_24ULSAVentas.Controllers
 
             try
             {
-                publicaciones = db.Publicacion.Where(p => p.titulo.Contains(q)).ToList();
+                publicaciones = db.Publicacion.Where(p => p.titulo.Contains(q.Trim())).ToList();
             }
             catch (Exception)
             {
@@ -155,6 +155,27 @@ namespace _2017_05_24ULSAVentas.Controllers
             TempData["criterioDeBusqueda"] = q;
 
             return View(publicaciones);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Ver(int? idPublicacion)
+        {
+            if (idPublicacion == null)
+                return RedirectToAction("Index", "Home");
+
+            Publicacion p = null;
+
+            try
+            {
+                p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(p);
         }
     }
 }
