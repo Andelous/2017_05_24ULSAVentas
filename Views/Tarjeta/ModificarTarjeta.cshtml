@@ -24,13 +24,13 @@ else if (tarjetaTarjetaModificada == false)
     @Html.HiddenFor(t => t.idTarjeta)
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
                 @Html.LabelFor(t => t.numeroDeTarjeta)
                 @Html.TextBoxFor(t => t.numeroDeTarjeta, new { @class = "form-control" })
             </div>
         </div>
-        <div class="col-md-6"><input type="submit" class="btn btn-success btn-block" value="Agregar" /></div>
+        <div class="col-md-12"><input type="submit" class="btn btn-success btn-block" value="Actualizar" /></div>
     </div>
 }
 

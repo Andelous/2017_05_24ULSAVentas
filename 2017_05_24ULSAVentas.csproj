@@ -357,11 +357,14 @@
     <Content Include="Views\Tarjeta\AgregarTarjeta.cshtml" />
     <Content Include="Views\Tarjeta\ModificarTarjeta.cshtml" />
     <Content Include="Views\Tarjeta\EliminarTarjeta.cshtml" />
+    <Content Include="Views\Telefono\Index.cshtml" />
+    <Content Include="Views\Telefono\AgregarTelefono.cshtml" />
+    <Content Include="Views\Telefono\ModificarTelefono.cshtml" />
+    <Content Include="Views\Telefono\EliminarTelefono.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Favorito\" />
-    <Folder Include="Views\Telefono\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

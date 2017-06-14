@@ -52,9 +52,7 @@ else if (cuentaPersonaModificada == false)
     @Ajax.ActionLink("Direcciones", "Index", "Direccion", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
     @Ajax.ActionLink("Correos", "Index", "Correo", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
     @Ajax.ActionLink("Tarjetas", "Index", "Tarjeta", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
-    <a class="btn btn-primary">
-        <span class="glyphicon glyphicon-phone"></span> Teléfonos
-    </a>
+    @Ajax.ActionLink("Teléfonos", "Index", "Telefono", null, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAdministracion" }, new { @class = "btn btn-primary" })
 </div>
 
 <div id="divAdministracion">

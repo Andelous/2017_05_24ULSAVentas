@@ -3881,8 +3881,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroDeTarjeta", DbType="VarChar(22) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Número de tarjeta")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroDeTarjeta", DbType="VarChar(22) NOT NULL", CanBeNull=false)]
 		public string numeroDeTarjeta
 		{
 			get
@@ -4057,8 +4059,10 @@ namespace _2017_05_24ULSAVentas.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+
+        [Required]
+        [Display(Name = "Número de teléfono")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string numero
 		{
 			get

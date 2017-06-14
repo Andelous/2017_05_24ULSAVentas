@@ -1,0 +1,24 @@
+﻿@{
+    bool? telefonoTelefonoEliminado = (bool?)TempData["telefonoTelefonoEliminado"];
+}
+
+@if (telefonoTelefonoEliminado == true)
+{
+    <div class="alert alert-warning">
+        Teléfono eliminado con éxito.
+    </div>
+}
+else if (telefonoTelefonoEliminado == false)
+{
+    <div class="alert alert-danger">
+        El teléfono no se eliminó.
+    </div>
+}
+
+<div class="btn-group btn-group-justified">
+    <a class="btn btn-default btn-block" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</a>
+</div>
+
+@{
+    TempData["telefonoTelefonoEliminado"] = null;
+}
