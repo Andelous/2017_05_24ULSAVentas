@@ -7,10 +7,24 @@
     ViewBag.cuentaPaginaActiva = "compras";
 
     bool? compraCompraRealizada = (bool?)TempData["compraCompraRealizada"];
+    bool? compraCompraActualizada = (bool?)TempData["compraCompraActualizada"];
 }
 
 <small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> compras</small>
 <hr />
+
+@if (compraCompraActualizada == true)
+{
+    <div class="alert alert-success">
+        Se han guardado tus cambios.
+    </div>
+}
+else if (compraCompraActualizada == false)
+{
+    <div class="alert alert-success">
+        Error al intentar procesar tu solicitud.
+    </div>
+}
 
 @if (compraCompraRealizada == true)
 {
@@ -22,5 +36,39 @@ else if (compraCompraRealizada == false)
 {
     <div class="alert alert-danger">
         Error al procesar la compra
+    </div>
+}
+
+
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Compra c in Model)
+    {
+        <div class="row">
+
+            <div class="col-md-3">
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", c.Publicacion)
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", c.Publicacion, new ViewDataDictionary { { "longitudCadena", 200 } })
+                <br />
+                <p><strong>@c.fecha.ToShortDateString()</strong> - Compraste @c.cantidad unidad(es)</p>
+            </div>
+
+            <div class="col-md-3">
+                <h4 class="page-header">Acciones</h4>
+
+                <div class="btn-group-vertical btn-block">
+                    <a class="btn btn-default text-success" href="@Url.Action("VerDetalle", "Compra", new { idCompra = c.idCompra })"><span class="glyphicon glyphicon-pencil"></span> Ver detalle</a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        Parece que aún no has comprado algún artículo en el sitio. Utiliza la barra de búsqueda para comenzar, o checa los artículos sugeridos en la página principal.
     </div>
 }

@@ -85,5 +85,50 @@ namespace _2017_05_24ULSAVentas.Controllers
 
             return RedirectToAction("Compras", "Cuenta");
         }
+
+        [HttpGet]
+        public ActionResult VerDetalle(int idCompra)
+        {
+            Compra c = null;
+
+            try
+            {
+                c = db.Compra.First(c1 => c1.idCompra == idCompra);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Compras", "Cuenta");
+            }
+
+            return View(c);
+        }
+
+        [HttpPost]
+        public ActionResult VerDetalle(int idCompra, bool? calificacionDeCompra, string comentarioDeCompra, bool? calificacionDeVenta, string comentarioDeVenta)
+        {
+            Compra c = null;
+
+            try
+            {
+                c = db.Compra.First(c1 => c1.idCompra == idCompra);
+
+                c.calificacionDeCompra = calificacionDeCompra;
+                c.calificacionDeVenta = calificacionDeVenta;
+                c.comentarioDeCompra = comentarioDeCompra;
+                c.comentarioDeVenta = comentarioDeVenta;
+
+                db.SubmitChanges();
+
+                TempData["compraCompraActualizada"] = true;
+            }
+            catch (Exception)
+            {
+                TempData["compraCompraActualizada"] = false;
+                throw;
+                return RedirectToAction("Compras", "Cuenta");
+            }
+
+            return View(c);
+        }
     }
 }
