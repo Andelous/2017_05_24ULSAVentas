@@ -196,6 +196,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComentarioController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
@@ -361,6 +362,7 @@
     <Content Include="Views\Telefono\AgregarTelefono.cshtml" />
     <Content Include="Views\Telefono\ModificarTelefono.cshtml" />
     <Content Include="Views\Telefono\EliminarTelefono.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

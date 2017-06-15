@@ -117,7 +117,7 @@
 
                 <br />
 
-                <a class="btn btn-lg btn-block @(Model.cantidad > 0 ? "btn-success" : "btn-warning disabled")">
+                <a class="btn btn-lg btn-block @(Model.cantidad > 0 ? "btn-success" : "btn-warning disabled")" href="@Url.Action("Index", "Compra", new { idPublicacion = Model.idPublicacion })">
                     @(Model.cantidad > 0 ? "Comprar" : "Producto agotado")
                 </a>
                 <a class="btn btn-danger btn-sm btn-block" href="@Url.Action("AgregarFavorito", "Favorito", new { idPublicacion = Model.idPublicacion })">
