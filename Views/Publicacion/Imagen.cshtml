@@ -1,0 +1,22 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Publicacion
+
+<div class="text-center">
+    <img class="img-thumbnail img-responsive" src="@Model.direccionImagen" />
+</div>
+
+<div class="row">
+    
+    <div class="col-md-6 text-left">
+        <span class="label label-default">
+            $ @string.Format("{0:n}", Model.precio)
+        </span>
+    </div>
+
+    <div class="col-md-6 text-right">
+        <span class="label @(Model.cantidad > 6 ? "label-primary" : Model.cantidad > 3 ? "label-success" : Model.cantidad == 0 ? "label-danger" : "label-warning")">
+            <small><span class="glyphicon glyphicon-tags"></span></small>&nbsp;&nbsp;@Model.cantidad uds.
+        </span>
+    </div>
+
+</div>

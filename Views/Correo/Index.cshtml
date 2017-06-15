@@ -1,0 +1,116 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Correo>
+
+<h3 class="page-header"><span class="glyphicon glyphicon-envelope"></span> Correos</h3>
+
+<script>
+    function mostrarModalModificarCorreo() {
+        $("#modalModificarCorreo").modal("toggle");
+    }
+</script>
+
+<p>
+    <a data-toggle="modal" href="#modalAgregarCorreo"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
+</p>
+
+<div class="modal fade" id="modalAgregarCorreo" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar correo</h4>
+            </div>
+
+            <div class="modal-body" id="divAgregarCorreo">
+                @Html.Action("AgregarCorreo", "Correo")
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalModificarCorreo" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Modificar correo</h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="divModificarCorreo">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@if (Model.Count > 0)
+{
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+        @foreach (Correo c in Model)
+        {
+            <tr>
+                <td>
+                    @c.direccionDeCorreo
+                </td>
+                <td>
+                    <a data-toggle="modal" href="#modalEliminarCorreo@(c.idCorreo)">Eliminar</a>
+                    &nbsp;|&nbsp;
+                    @Ajax.ActionLink("Modificar", "ModificarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarCorreo", HttpMethod = "GET" }, new { onclick = "mostrarModalModificarCorreo()" })
+                </td>
+            </tr>
+
+            <div class="modal fade" id="modalEliminarCorreo@(c.idCorreo)" role="dialog">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar correo</h4>
+                        </div>
+
+                        <div class="modal-body" id="divEliminarCorreo@(c.idCorreo)">
+                            <div class="alert alert-warning">Está seguro que quiere eliminar el correo "@c.direccionDeCorreo"</div>
+                            <div class="btn-group btn-group-justified">
+                                @Ajax.ActionLink("Sí", "EliminarCorreo", "Correo", new { idCorreo = c.idCorreo }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = ("divEliminarCorreo" + c.idCorreo) }, new { @class = "btn btn-danger" })
+                                <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-info">Sin correos</div>
+}

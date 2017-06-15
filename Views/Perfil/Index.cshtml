@@ -1,0 +1,16 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Usuario
+
+@{
+    ViewBag.Title = "Perfil de " + Model.usuario1;
+}
+
+<h2 class="page-header">Perfil de <strong>@Model.usuario1</strong></h2>
+
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        
+        @Html.Action("RenderizarPerfil", "Perfil", new { idUsuario = Model.idUsuario })
+
+    </div>
+</div>

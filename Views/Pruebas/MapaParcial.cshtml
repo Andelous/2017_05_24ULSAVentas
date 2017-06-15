@@ -1,0 +1,23 @@
+﻿@model string[]
+
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<script>
+
+    function initMap() {
+        var lat1 = @Model[0];
+        var lng1 = @Model[1];
+
+        var uluru = { lat: lat1, lng: lng1 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
+    initMap();
+</script>

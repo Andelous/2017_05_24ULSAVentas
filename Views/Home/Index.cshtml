@@ -1,31 +1,73 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Publicacion>
+
+@{
+    ViewBag.Title = "Inicio";
+    ViewBag.layoutPaginaActiva = "inicio";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1><span class="glyphicon glyphicon-shopping-cart"></span> ULSA Ventas</h1>
+    
+    <p class="lead">
+        Bienvenido a ULSA Ventas, el lugar donde comprar y vender tus cosas.
+    </p>
 </div>
 
+@if (Model.Count > 0)
+{
+    <h3 class="page-header">Productos que quizá te interesen</h3>
+    <div class="row">
+
+        @foreach (Publicacion p in Model)
+        {
+            <div class="col-md-4">
+                
+                <div class="row">
+
+                    <div class="col-md-6">
+                        @Html.Partial("~/Views/Publicacion/Imagen.cshtml", p)
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", p, new ViewDataDictionary { { "longitudCadena", 60 } })
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        Ups, parece que aún no hay publicaciones ¡Sé el primero en publicar!
+    </div>
+}
+
+<br />
+<hr />
+
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="col-md-4">
+            <h2>¡Comienza ya!</h2>
+            <p>
+                Crea una cuenta y comienza a comprar y vender.
+            </p>
+            <p><a class="btn btn-success btn-block" href="@Url.Action("Register", "Account")">Regístrate <span class="glyphicon glyphicon-user"></span></a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>¿Ya eres miembro?</h2>
+            <p>Inicia sesión para ver tus compras y ventas.</p>
+            <p><a class="btn btn-primary btn-block" href="@Url.Action("Login", "Account")">Iniciar sesión <span class="glyphicon glyphicon-log-in"></span></a></p>
+        </div>
+    }
+    <div class="@(Request.IsAuthenticated ? "col-md-12" : "col-md-4")">
+        <h2>Proyecto escolar</h2>
+        <p>Proyecto escolar para la materia Desarrollo Web II. Universidad LaSalle Oaxaca</p>
     </div>
 </div>

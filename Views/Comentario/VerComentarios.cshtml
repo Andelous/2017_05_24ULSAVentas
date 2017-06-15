@@ -1,0 +1,51 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Comentario>
+
+<h3 class="page-header">Comentarios@(Model != null ? " (" + Model.Count + ")" : "0")</h3>
+<p>
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="panel-group">
+
+            @foreach (Comentario c in Model)
+            {
+                <div class="panel @(Request.IsAuthenticated && c.Usuario.usuario1 == User.Identity.Name ? "panel-success" : "panel-default")">
+                    <div class="panel-heading">
+                        @c.fecha.ToShortDateString() - <strong><a href="@Url.Action("Index", "Perfil", new { idUsuario = c.Usuario.idUsuario })">@c.Usuario.usuario1</a></strong> dijo...
+                    </div>
+                    <div class="panel-body">
+                        @c.comentario1
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Parece que esta publicación no tiene comentarios aún ¡Sé el primero, <strong>soyez le premier</strong>!
+        </div>
+    }
+</p>
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("VerComentarios", "Comentario", FormMethod.Post))
+    {
+        <input type="hidden" name="idPublicacion" value="@Session["idPublicacion"]"/>
+
+        <div class="form-group">
+            <label>Comenta</label>
+            <textarea name="comentario" placeholder="Tu comentario aquí" class="form-control"></textarea>
+        </div>
+        
+        <input type="submit" class="btn btn-success" value="Comentar"/>
+    }
+}
+else
+{
+    <div class="alert alert-success">
+        Regístrate o inicia sesión para poder comentar.
+    </div>
+}

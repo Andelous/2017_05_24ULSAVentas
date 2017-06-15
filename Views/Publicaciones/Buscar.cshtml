@@ -1,0 +1,32 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Publicacion>
+
+@{
+    ViewBag.Title = "Búsqueda de publicaciones";
+}
+
+<h3 class="page-header">Búsqueda de "@TempData["criterioDeBusqueda"]" (@Model.Count resultados)</h3>
+
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Publicacion p in Model)
+    {
+        <div class="row">
+
+            <div class="col-md-2">
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", p)
+            </div>
+            <div class="col-md-10">
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", p, new ViewDataDictionary { { "longitudCadena", 400 } })
+            </div>
+
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        Lo sentimos, sus criterios de búsqueda no produjeron algún resultado.
+    </div>
+}

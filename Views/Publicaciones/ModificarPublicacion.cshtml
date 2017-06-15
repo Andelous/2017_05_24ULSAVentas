@@ -1,0 +1,69 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Publicacion
+
+@{
+    ViewBag.Title = "Modificar publicación";
+    ViewBag.layoutPaginaActiva = "publicar";
+
+    bool? publicacionesPublicacionActualizada = (bool?)TempData["publicacionesPublicacionActualizada"];
+}
+
+<h2 class="page-header">Publica un producto</h2>
+
+@if (publicacionesPublicacionActualizada == true)
+{
+    <div class="alert alert-success">
+        Publicación actualizada con éxito.
+    </div>
+}
+else if (publicacionesPublicacionActualizada == false)
+{
+    <div class="alert alert-danger">
+        Error al actualizar la publicación.
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(p => p.titulo)
+                @Html.TextBoxFor(p => p.titulo, new { @class = "form-control", placeholder = "Título de la publicación" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.precio)
+                @Html.TextBoxFor(p => p.precio, new { @class = "form-control", @type = "number", value = "0.00", min = "0", step = "any" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.cantidad)
+                @Html.TextBoxFor(p => p.cantidad, new { @class = "form-control", @type = "number", value = "5", min = "0", step = "1" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(p => p.descripcion)<br />
+                @Html.TextAreaFor(p => p.descripcion, new { @class = "form-control", placeholder = "Descripción del producto" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.direccionImagen)
+                @Html.TextBoxFor(p => p.direccionImagen, new { @class = "form-control", placeholder = "URL de la imagen" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <input type="submit" value="Actualizar" class="btn btn-success btn-block btn-lg" />
+        </div>
+    </div>
+}
+

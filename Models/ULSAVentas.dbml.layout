@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 25.125" name="ULSAVentas">
+  <DataContextMoniker Name="/ULSAVentasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6128c413-3248-40fa-bce8-7d0c81015c52" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ULSAVentasDataContext/__MigrationHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b998dd06-6af8-4cd0-880e-cbf5cd33dc81" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" absoluteBounds="3.5, 14.125, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a166b6f-b631-4da4-b9fb-71f9abc49907" absoluteBounds="3.515, 14.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="31d83bc8-0f33-4e44-8164-89d03a47e510" absoluteBounds="3.75, 5.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/ULSAVentasDataContext/AspNetRoles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c051fcf-7ca2-4481-a0b6-e9c0ede0f1d9" absoluteBounds="3.765, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c32222a8-83c3-4e6a-8d57-b01331fc9f55" absoluteBounds="3.5, 23.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ULSAVentasDataContext/AspNetUserClaims" />
+      <nestedChildShapes>
+        <elementListCompartment Id="864b61ed-16ab-415e-bb2a-ee059872c895" absoluteBounds="3.515, 23.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74b4f348-0283-49a4-b1c9-fd187a8bf1d2" absoluteBounds="3.5, 21.125, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/ULSAVentasDataContext/AspNetUserLogins" />
+      <nestedChildShapes>
+        <elementListCompartment Id="580bd2e9-7ccb-41ed-b6b1-00fc0a240077" absoluteBounds="3.515, 21.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47f9602a-6d9d-4e07-b1a8-8cd388023b38" absoluteBounds="6.5, 11.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/ULSAVentasDataContext/AspNetUserRoles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20c8e48e-af27-45f5-a5e3-c786f207bc6c" absoluteBounds="6.515, 11.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d78acd4-fdc5-49f4-8524-46f2b20d004b" absoluteBounds="0.75, 14.5, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/ULSAVentasDataContext/AspNetUsers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de95a745-841c-43a4-ada2-78c096be55b6" absoluteBounds="0.765, 14.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8fb81424-5557-4363-bf2e-12199a7d0714" absoluteBounds="9, 13.625, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Comentario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c5b8997-6ecb-4240-b9cb-73168a2b8701" absoluteBounds="9.015, 14.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f519121-ceb5-4a48-80db-d0b7cbbd4ebd" absoluteBounds="12, 13.75, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Compra" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eba44df8-ccd4-459f-87d7-8238a051774d" absoluteBounds="12.015, 14.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="012d4531-5714-4f03-a3c5-9d1a9c2d6dd2" absoluteBounds="3.5, 7.5, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Correo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="48b19d16-c48d-4448-a286-a816fe84bf5d" absoluteBounds="3.515, 7.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ac64e83-bb7c-4e90-a37b-9cc3206bcc78" absoluteBounds="3.5, 16.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Direccion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f245c374-d965-4ad6-b197-cefabc31285d" absoluteBounds="3.515, 17.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a151fc04-3da2-4e21-8e30-1d3ad845d163" absoluteBounds="9, 16.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Favorito" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d267adc3-22d4-4e33-9add-a3020d60ddcd" absoluteBounds="9.015, 17.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="445120bb-d8c0-4371-b800-eaaaec3411e2" absoluteBounds="0.75, 11.125, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Persona" />
+      <nestedChildShapes>
+        <elementListCompartment Id="312c7849-c6eb-4776-af02-f7029d9bc967" absoluteBounds="0.765, 11.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13394679-b10b-4fb7-a321-c388f0c2788b" absoluteBounds="6.25, 18.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Publicacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64d845aa-34b8-450d-898c-6c64c83bd92f" absoluteBounds="6.265, 19.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68b2369b-befd-4011-8f0e-33f916b07c64" absoluteBounds="3.5, 9.625, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/ULSAVentasDataContext/TarjetaDeCredito" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7330869c-acc3-4938-b1cb-8e3cc72d9ab3" absoluteBounds="3.515, 10.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f0365c34-d32d-4956-98ab-7233dc28f278" absoluteBounds="3.5, 11.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/ULSAVentasDataContext/Telefono" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5dfa1e65-5c22-44bd-a997-b402291375b3" absoluteBounds="3.515, 12.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.65625 : 6.56899251302083); (5.65625 : 11.53125); (6.5 : 11.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/AspNetRoles/AspNetRoles_AspNetUserRoles" />
+      <nodes>
+        <classShapeMoniker Id="31d83bc8-0f33-4e44-8164-89d03a47e510" />
+        <classShapeMoniker Id="47f9602a-6d9d-4e07-b1a8-8cd388023b38" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 15.1979484049479); (3.04166666666667 : 15.1979484049479 : JumpStart); (3.20833333333333 : 15.1979484049479 : JumpEnd); (3.5 : 15.1979484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/AspNetUsers/AspNetUsers_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="5d78acd4-fdc5-49f4-8524-46f2b20d004b" />
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 17.6170068359375); (1.75 : 24.0392976888021); (3.5 : 24.0392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/AspNetUsers/AspNetUsers_AspNetUserClaims" />
+      <nodes>
+        <classShapeMoniker Id="5d78acd4-fdc5-49f4-8524-46f2b20d004b" />
+        <classShapeMoniker Id="c32222a8-83c3-4e6a-8d57-b01331fc9f55" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 17.6170068359375); (2.2812525 : 21.8181469726563); (3.5 : 21.8181469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/AspNetUsers/AspNetUsers_AspNetUserLogins" />
+      <nodes>
+        <classShapeMoniker Id="5d78acd4-fdc5-49f4-8524-46f2b20d004b" />
+        <classShapeMoniker Id="74b4f348-0283-49a4-b1c9-fd187a8bf1d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 16.3229484049479); (3.04166666666667 : 16.3229484049479 : JumpStart); (3.20833333333333 : 16.3229484049479 : JumpEnd); (6.44791416666667 : 16.3229484049479 : JumpStart); (6.61458083333333 : 16.3229484049479 : JumpEnd); (6.79166666666667 : 16.3229484049479 : JumpStart); (6.95833333333333 : 16.3229484049479 : JumpEnd); (7.5 : 16.3229484049479); (7.5 : 12.5689925130208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/AspNetUsers/AspNetUsers_AspNetUserRoles" />
+      <nodes>
+        <classShapeMoniker Id="5d78acd4-fdc5-49f4-8524-46f2b20d004b" />
+        <classShapeMoniker Id="47f9602a-6d9d-4e07-b1a8-8cd388023b38" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 14.7604484049479); (6.79166666666667 : 14.7604484049479 : JumpStart); (6.95833333333333 : 14.7604484049479 : JumpEnd); (7.41666666666667 : 14.7604484049479 : JumpStart); (7.58333333333333 : 14.7604484049479 : JumpEnd); (9 : 14.7604484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Usuario/Usuario_Comentario" />
+      <nodes>
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+        <classShapeMoniker Id="8fb81424-5557-4363-bf2e-12199a7d0714" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 15.6771468098958); (6.44791416666667 : 15.6771468098958 : JumpStart); (6.61458083333333 : 15.6771468098958 : JumpEnd); (6.79166666666667 : 15.6771468098958 : JumpStart); (6.95833333333333 : 15.6771468098958 : JumpEnd); (7.41666666666667 : 15.6771468098958 : JumpStart); (7.58333333333333 : 15.6771468098958 : JumpEnd); (12 : 15.6771468098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Usuario/Usuario_Compra" />
+      <nodes>
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+        <classShapeMoniker Id="7f519121-ceb5-4a48-80db-d0b7cbbd4ebd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 18.3806469726563); (6.44791416666667 : 18.3806469726563 : JumpStart); (6.61458083333333 : 18.3806469726563 : JumpEnd); (6.79166666666667 : 18.3806469726563 : JumpStart); (6.95833333333333 : 18.3806469726563 : JumpEnd); (7.79166666666667 : 18.3806469726563 : JumpStart); (7.95833333333333 : 18.3806469726563 : JumpEnd); (9.91666666666667 : 18.3806469726563 : JumpStart); (10.0833333333333 : 18.3806469726563 : JumpEnd); (13 : 18.3806469726563); (13 : 16.6747054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Direccion/Direccion_Compra" />
+      <nodes>
+        <classShapeMoniker Id="5ac64e83-bb7c-4e90-a37b-9cc3206bcc78" />
+        <classShapeMoniker Id="7f519121-ceb5-4a48-80db-d0b7cbbd4ebd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 15.8958968098958); (5.875 : 16.2708968098958); (5.875 : 17.4431469726563); (6.44791416666667 : 17.4431469726563 : JumpStart); (6.61458083333333 : 17.4431469726563 : JumpEnd); (6.79166666666667 : 17.4431469726563 : JumpStart); (6.95833333333333 : 17.4431469726563 : JumpEnd); (7.79166666666667 : 17.4431469726563 : JumpStart); (7.95833333333333 : 17.4431469726563 : JumpEnd); (9 : 17.4431469726563)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Usuario/Usuario_Favorito" />
+      <nodes>
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+        <classShapeMoniker Id="a151fc04-3da2-4e21-8e30-1d3ad845d163" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 12.8359577640224); (3.28125 : 13.3672077640224); (3.28125 : 14.630222202474); (3.5 : 14.630222202474)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Persona/Persona_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="445120bb-d8c0-4371-b800-eaaaec3411e2" />
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 11.125); (1.75 : 8.19314697265625); (3.5 : 8.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Persona/Persona_Correo" />
+      <nodes>
+        <classShapeMoniker Id="445120bb-d8c0-4371-b800-eaaaec3411e2" />
+        <classShapeMoniker Id="012d4531-5714-4f03-a3c5-9d1a9c2d6dd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.72139320537861 : 12.8958968098958); (3.125 : 13.2995036045172); (3.125 : 18.1162019856771); (3.5 : 18.1162019856771)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Persona/Persona_Direccion" />
+      <nodes>
+        <classShapeMoniker Id="445120bb-d8c0-4371-b800-eaaaec3411e2" />
+        <classShapeMoniker Id="5ac64e83-bb7c-4e90-a37b-9cc3206bcc78" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.875 : 18.625); (6.875 : 14.161471702474); (7.41666666666667 : 14.161471702474 : JumpStart); (7.58333333333333 : 14.161471702474 : JumpEnd); (9 : 14.161471702474)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Publicacion/Publicacion_Comentario" />
+      <nodes>
+        <classShapeMoniker Id="13394679-b10b-4fb7-a321-c388f0c2788b" />
+        <classShapeMoniker Id="8fb81424-5557-4363-bf2e-12199a7d0714" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.875 : 18.625); (7.875 : 16.0313001074219); (12 : 16.0313001074219)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Publicacion/Publicacion_Compra" />
+      <nodes>
+        <classShapeMoniker Id="13394679-b10b-4fb7-a321-c388f0c2788b" />
+        <classShapeMoniker Id="7f519121-ceb5-4a48-80db-d0b7cbbd4ebd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 19.7027498372396); (10 : 19.7027498372396); (10 : 18.1362939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Publicacion/Publicacion_Favorito" />
+      <nodes>
+        <classShapeMoniker Id="13394679-b10b-4fb7-a321-c388f0c2788b" />
+        <classShapeMoniker Id="a151fc04-3da2-4e21-8e30-1d3ad845d163" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 15.2187976074219); (6.5312475 : 15.2187976074219); (6.5312475 : 18.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Usuario/Usuario_Publicacion" />
+      <nodes>
+        <classShapeMoniker Id="b19b0775-57cb-41fe-bd27-588c59ea16d1" />
+        <classShapeMoniker Id="13394679-b10b-4fb7-a321-c388f0c2788b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 10.3181469726562); (5.57291666666667 : 10.3181469726562 : JumpStart); (5.73958333333333 : 10.3181469726562 : JumpEnd); (13 : 10.3181469726562); (13 : 13.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/TarjetaDeCredito/TarjetaDeCredito_Compra" />
+      <nodes>
+        <classShapeMoniker Id="68b2369b-befd-4011-8f0e-33f916b07c64" />
+        <classShapeMoniker Id="7f519121-ceb5-4a48-80db-d0b7cbbd4ebd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 11.125); (2.2812525 : 10.3181469726562); (3.5 : 10.3181469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Persona/Persona_TarjetaDeCredito" />
+      <nodes>
+        <classShapeMoniker Id="445120bb-d8c0-4371-b800-eaaaec3411e2" />
+        <classShapeMoniker Id="68b2369b-befd-4011-8f0e-33f916b07c64" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 12.2617263820112); (3.5 : 12.2617263820112)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ULSAVentasDataContext/Persona/Persona_Telefono" />
+      <nodes>
+        <classShapeMoniker Id="445120bb-d8c0-4371-b800-eaaaec3411e2" />
+        <classShapeMoniker Id="f0365c34-d32d-4956-98ab-7233dc28f278" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

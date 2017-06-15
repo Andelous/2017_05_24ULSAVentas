@@ -1,0 +1,38 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Telefono
+
+@{
+    bool? telefonoTelefonoAgregado = (bool?)TempData["telefonoTelefonoAgregado"];
+}
+
+@if (telefonoTelefonoAgregado == true)
+{
+    <div class="alert alert-success">
+        Teléfono agregada con éxito.
+    </div>
+}
+else if (telefonoTelefonoAgregado == false)
+{
+    <div class="alert alert-danger">
+        No se ha agregado el número de teléfono.
+    </div>
+}
+
+@using (Ajax.BeginForm("AgregarTelefono", "Telefono", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divAgregarTelefono", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.numero)
+                @Html.TextBoxFor(t => t.numero, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-12"><input type="submit" class="btn btn-success btn-block" value="Agregar" /></div>
+    </div>
+}
+
+@{
+    TempData["telefonoTelefonoAgregado"] = null;
+}

@@ -1,0 +1,59 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Compra>
+
+@{
+    Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
+    ViewBag.Title = "Ventas";
+    ViewBag.cuentaPaginaActiva = "ventas";
+    
+    bool? compraCompraActualizada = (bool?)TempData["compraCompraActualizada"];
+}
+
+<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> ventas</small>
+<hr />
+
+@if (compraCompraActualizada == true)
+{
+    <div class="alert alert-success">
+        Se han guardado tus cambios.
+    </div>
+}
+else if (compraCompraActualizada == false)
+{
+    <div class="alert alert-success">
+        Error al procesar tu solicitud.
+    </div>
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Compra c in Model)
+    {
+        <div class="row">
+
+            <div class="col-md-3">
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", c.Publicacion)
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", c.Publicacion, new ViewDataDictionary { { "longitudCadena", 200 } })
+                <br />
+                <p><strong>@c.fecha.ToShortDateString() - <a href="@Url.Action("Index", "Perfil", new { idUsuario = c.Usuario.idUsuario} )">@c.Usuario.usuario1</a></strong> compró @c.cantidad unidad(es)</p>
+            </div>
+
+            <div class="col-md-3">
+                <h4 class="page-header">Acciones</h4>
+
+                <div class="btn-group-vertical btn-block">
+                    <a class="btn btn-default text-success" href="@Url.Action("VerDetalle", "Compra", new { idCompra = c.idCompra })"><span class="glyphicon glyphicon-pencil"></span> Ver detalle</a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        Parece que aún no tienes ventas en el sitio.
+    </div>
+}

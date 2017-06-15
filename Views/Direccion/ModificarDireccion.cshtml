@@ -1,0 +1,85 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Direccion
+
+@{
+    bool? direccionDireccionModificada = (bool?)TempData["direccionDireccionModificada"];
+}
+
+@if (direccionDireccionModificada == true)
+{
+    <div class="alert alert-success">
+        Dirección modificada con éxito.
+    </div>
+}
+else if (direccionDireccionModificada == false)
+{
+    <div class="alert alert-danger">
+        No se ha modificado la dirección.
+    </div>
+}
+
+@using (Ajax.BeginForm("ModificarDireccion", "Direccion", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarDireccion", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.HiddenFor(d => d.idDireccion)
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(d => d.calle)
+                @Html.TextBoxFor(d => d.calle, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(d => d.numeroExterior) (Opcional)
+                @Html.TextBoxFor(d => d.numeroExterior, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(d => d.numeroInterior) (Opcional)
+                @Html.TextBoxFor(d => d.numeroInterior, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(d => d.colonia)
+                @Html.TextBoxFor(d => d.colonia, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(d => d.codigoPostal)
+                @Html.TextBoxFor(d => d.codigoPostal, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(d => d.estado)
+                @Html.TextBoxFor(d => d.estado, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <h4 class="page-header"><span class="glyphicon glyphicon-map-marker"></span> Opciones de mapa (opcionales)</h4>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(d => d.latitud)
+                @Html.TextBoxFor(d => d.latitud, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(d => d.longitud)
+                @Html.TextBoxFor(d => d.longitud, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <input type="submit" class="btn btn-success btn-block" value="Actualizar" />
+        </div>
+    </div>
+}
+
+@{
+    TempData["direccionDireccionModificada"] = null;
+}

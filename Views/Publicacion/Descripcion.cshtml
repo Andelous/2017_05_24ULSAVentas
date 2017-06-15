@@ -1,0 +1,21 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Publicacion
+
+@{ 
+    int longitudCadena = (int)ViewData["longitudCadena"];
+}
+
+<h4 class="page-header">
+    <a class="text-primary" href="@Url.Action("VerPublicacion", "Publicaciones", new { idPublicacion = Model.idPublicacion } )">@Model.titulo</a>
+</h4>
+
+<p class="text-muted">
+    @if (Model.descripcion.Length > longitudCadena)
+    {
+        @Model.descripcion.Substring(0, longitudCadena)@:...
+    }
+    else
+    {
+        @Model.descripcion
+    }
+</p>

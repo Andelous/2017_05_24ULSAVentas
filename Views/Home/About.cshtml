@@ -1,7 +1,15 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Acerca de nosotros";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2 class="page-header">@ViewBag.Title.</h2>
 
-<p>Use this area to provide additional information.</p>
+<div class="row">
+    <div class="col-md-6">
+        <p>Proyecto escolar de Desarrollo Web II</p>
+    </div>
+    <div class="col-md-6">
+        <p>Nuestras oficinas:</p>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBosm5YSmCWuTxoAYG2GGSFF3yLamdXNJE"></script>
+        @Html.Action("MapaParcial", "Pruebas", new { lat=17.021963, lng=-96.720713 })
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Usuario
+
+@{ 
+    int compras = (int)TempData["compras"];
+    int ventas = (int)TempData["ventas"];
+
+    int calificacionesVendedorPositivas = (int)TempData["calificacionesVendedorPositivas"];
+    int calificacionesVendedorNegativas = (int)TempData["calificacionesVendedorNegativas"];
+    int calificacionesVendedorNeutrales = (int)TempData["calificacionesVendedorNeutrales"];
+
+    int calificacionesCompradorPositivas = (int)TempData["calificacionesCompradorPositivas"];
+    int calificacionesCompradorNegativas = (int)TempData["calificacionesCompradorNegativas"];
+    int calificacionesCompradorNeutrales = (int)TempData["calificacionesCompradorNeutrales"];
+
+    double comprasPositivas = compras != 0 ? ((double)calificacionesCompradorPositivas) / ((double)compras) * 100 : 0;
+    double ventasPositivas = ventas != 0 ? ((double)calificacionesVendedorPositivas) / ((double)ventas) * 100 : 0;
+
+    List<Publicacion> publicaciones = (List<Publicacion>)TempData["publicacionesPerfil"];
+}
+
+<div class="row">
+    
+    <div class="col-md-6 text-center">
+        <h3 class="page-header">Como comprador</h3>
+
+        <p>Ha completado un total de <strong>@compras</strong> compras.</p>
+        
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+                @calificacionesCompradorPositivas
+            </a>
+            <a class="btn btn-danger">
+                <span class="glyphicon glyphicon-minus"></span>
+                @calificacionesCompradorNegativas
+            </a>
+            <a class="btn btn-primary">
+                <span class="glyphicon glyphicon-unchecked"></span>
+                @calificacionesCompradorNeutrales
+            </a>
+        </div>
+
+        <br />
+        <p>
+            El usuario tiene <strong>@string.Format("{0:n}", comprasPositivas)</strong>% de calificaciones positivas.
+        </p>
+    </div>
+
+    <div class="col-md-6 text-center">
+        <h3 class="page-header">Como vendedor</h3>
+
+        <p>Ha completado un total de <strong>@ventas</strong> ventas.</p>
+
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+                @calificacionesVendedorPositivas
+            </a>
+            <a class="btn btn-danger">
+                <span class="glyphicon glyphicon-minus"></span>
+                @calificacionesVendedorNegativas
+            </a>
+            <a class="btn btn-primary">
+                <span class="glyphicon glyphicon-unchecked"></span>
+                @calificacionesVendedorNeutrales
+            </a>
+        </div>
+
+        <br />
+        <p>
+            El usuario tiene <strong>@string.Format("{0:n}", ventasPositivas)</strong>% de calificaciones positivas.
+        </p>
+
+    </div>
+
+    <div class="col-md-12">
+        <h3 class="page-header">Publicaciones del usuario</h3>
+
+        @if (publicaciones != null && publicaciones.Count > 0)
+        {
+            foreach (Publicacion p in publicaciones)
+            {
+                <div class="row">
+
+                    <div class="col-md-3">
+                        @Html.Partial("~/Views/Publicacion/Imagen.cshtml", p)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", p, new ViewDataDictionary { { "longitudCadena", 400 } })
+                    </div>
+
+                </div>
+                <hr />
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">
+                Parece que el usuario aún no publica artículos.
+            </div>
+        }
+
+    </div>
+
+</div>

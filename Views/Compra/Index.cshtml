@@ -1,0 +1,119 @@
+﻿@using  _2017_05_24ULSAVentas.Models
+@model Publicacion
+
+@{
+    ViewBag.Title = "Comprar " + Model.titulo.Substring(0, Model.titulo.Length > 10 ? 10 : Model.titulo.Length) + "...";
+
+    List<Direccion> direcciones = (List<Direccion>)TempData["compraDireccionesUsuario"];
+    List<TarjetaDeCredito> tarjetas = (List<TarjetaDeCredito>)TempData["compraTarjetasUsuario"];
+
+    bool? compraCompraRealizada = (bool?)TempData["compraCompraRealizada"];
+}
+
+<script>
+    function calcularTotal() {
+        var cantidad = document.getElementById("inputCantidad").value;
+        var cadena = "<strong>$ " + (@Model.precio * cantidad).toFixed(2) + "</strong>"
+
+        document.getElementById("pCostoTotal").innerHTML = cadena;
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <h2 class="page-header">Comprar</h2>
+
+        @if (compraCompraRealizada == true)
+        {
+            <div class="alert alert-success">
+                Compra realizada con éxito.
+            </div>
+        }
+        else if (compraCompraRealizada == false)
+        {
+            <div class="alert alert-danger">
+                Error al procesar la compra
+            </div>
+        }
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        @Html.Partial("~/Views/Publicacion/Imagen.cshtml", Model)
+                    </div>
+
+                    <div class="col-md-9">
+                        @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", Model, new ViewDataDictionary { { "longitudCadena", 100 } })
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                
+                <form action="@(direcciones.Count > 0 && tarjetas.Count > 0 && Model.cantidad > 0 ? Url.Action("Comprar", "Compra") : "#")" method="post">
+                    <input type="hidden" name="idPublicacion" value="@Model.idPublicacion"/>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <h3 class="page-header">Producto</h3>
+
+                            <div class="form-group">
+                                <label>Unidades</label>
+                                <input type="number" min="1" max="@Model.cantidad" step="1" value="1" class="form-control" name="cantidad" id="inputCantidad" onchange="calcularTotal()"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h3 class="page-header">Envío</h3>
+
+                            <div class="form-group">
+                                <label>Dirección del envío</label>
+                                <select class="form-control" name="idDireccion">
+                                    @foreach (Direccion d in direcciones)
+                                    {
+                                        <option value="@d.idDireccion">@d.getString()</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h3 class="page-header">Pago</h3>
+
+                            <div class="form-group">
+                                <label>Selecciona el medio de pago del producto</label>
+                                <select class="form-control" name="idTarjeta">
+                                    @foreach (TarjetaDeCredito t in tarjetas)
+                                    {
+                                        <option value="@t.idTarjeta">@t.numeroDeTarjeta</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-offset-4 col-md-4 text-center">
+                            <h4 class="text-primary">
+                                <strong>Costo final</strong>
+                            </h4>
+                            <h3 class="text-danger" id="pCostoTotal">
+                                <strong>$@string.Format("{0:n}", Model.precio)</strong>
+                            </h3>
+                            <input type="submit" value="Comprar" class="btn btn-success btn-block form-control @(direcciones.Count > 0 && tarjetas.Count > 0 && Model.cantidad > 0 ? "" : "disabled")" />
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

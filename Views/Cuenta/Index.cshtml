@@ -1,0 +1,11 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Usuario
+
+@{
+    Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
+
+    ViewBag.Title = "Mi cuenta";
+    ViewBag.cuentaPaginaActiva = "resumen";
+}
+
+@Html.Action("RenderizarPerfil", "Perfil", new { idUsuario = Model.idUsuario })

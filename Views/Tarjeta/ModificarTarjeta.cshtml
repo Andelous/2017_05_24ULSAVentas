@@ -1,0 +1,39 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model TarjetaDeCredito
+
+@{
+    bool? tarjetaTarjetaModificada = (bool?)TempData["tarjetaTarjetaModificada"];
+}
+
+@if (tarjetaTarjetaModificada == true)
+{
+    <div class="alert alert-success">
+        Tarjeta modificada con éxito.
+    </div>
+}
+else if (tarjetaTarjetaModificada == false)
+{
+    <div class="alert alert-danger">
+        No se ha modificado la tarjeta.
+    </div>
+}
+
+@using (Ajax.BeginForm("ModificarTarjeta", "Tarjeta", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarTarjeta", HttpMethod = "POST" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.HiddenFor(t => t.idTarjeta)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.numeroDeTarjeta)
+                @Html.TextBoxFor(t => t.numeroDeTarjeta, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-12"><input type="submit" class="btn btn-success btn-block" value="Actualizar" /></div>
+    </div>
+}
+
+@{
+    TempData["tarjetaTarjetaModificada"] = null;
+}

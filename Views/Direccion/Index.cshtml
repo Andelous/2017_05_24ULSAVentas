@@ -1,0 +1,148 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model List<Direccion>
+
+<h3 class="page-header"><span class="glyphicon glyphicon-map-marker"></span> Direcciones</h3>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBosm5YSmCWuTxoAYG2GGSFF3yLamdXNJE"></script>
+
+<script>
+    function mostrarModalModificarDireccion() {
+        $("#modalModificarDireccion").modal("toggle");
+    }
+
+    function mostrarModalMapaParcial() {
+        $("#modalMapaParcial").modal("toggle");
+    }
+
+    $("#modalMapaParcial").on('shown.bs.modal', function () {
+        initMap();
+    });
+</script>
+
+<p>
+    <a data-toggle="modal" href="#modalAgregarDireccion"><span class="glyphicon glyphicon-plus"></span> Agregar</a>
+</p>
+
+<div class="modal fade" id="modalAgregarDireccion" role="dialog">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar dirección</h4>
+            </div>
+
+            <div class="modal-body" id="divAgregarDireccion">
+                @Html.Action("AgregarDireccion", "Direccion")
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalModificarDireccion" role="dialog">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Modificar dirección</h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="divModificarDireccion">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalMapaParcial" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Mapa</h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="divMapaParcial">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@if (Model.Count > 0)
+{
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+        @foreach (Direccion d in Model)
+        {
+            <tr>
+                <td>
+                    @d.getString()
+                </td>
+                <td>
+                    <a data-toggle="modal" href="#modalEliminarDireccion@(d.idDireccion)">Eliminar</a>
+                    &nbsp;|&nbsp;
+                    @Ajax.ActionLink("Modificar", "ModificarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divModificarDireccion", HttpMethod = "GET" }, new { onclick= "mostrarModalModificarDireccion()" })
+                    &nbsp;|&nbsp;
+                    @Ajax.ActionLink("Mostrar mapa", "MapaParcial", "Pruebas", new { lat = d.latitud, lng = d.longitud }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divMapaParcial" }, new { onclick = "mostrarModalMapaParcial()" })
+                </td>
+            </tr>
+
+            <div class="modal fade" id="modalEliminarDireccion@(d.idDireccion)" role="dialog">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar direccion</h4>
+                        </div>
+
+                        <div class="modal-body" id="divEliminarDireccion@(d.idDireccion)">
+                            <div class="alert alert-warning">Está seguro que quiere eliminar la dirección "@d.getString()"</div>
+                            <div class="btn-group btn-group-justified">
+                                @Ajax.ActionLink("Sí", "EliminarDireccion", "Direccion", new { idDireccion = d.idDireccion }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = ("divEliminarDireccion" + d.idDireccion) }, new { @class = "btn btn-danger" })
+                                <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-info">Sin direcciones</div>
+}

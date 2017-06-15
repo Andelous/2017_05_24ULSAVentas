@@ -1,0 +1,150 @@
+﻿@using _2017_05_24ULSAVentas.Models
+@model Compra
+
+@{
+    ViewBag.Title = "Detalle de compra";
+
+    bool? compraCompraActualizada = (bool?)TempData["compraCompraActualizada"];
+}
+
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        
+        <h2 class="page-header">Detalle de compra/venta (#@Model.idCompra)</h2>
+
+        @if (compraCompraActualizada == true)
+        {
+            <div class="alert alert-success">
+                Se han guardado tus cambios.
+            </div>
+        }
+        else if (compraCompraActualizada == false)
+        {
+            <div class="alert alert-danger">
+                Error al intentar procesar tu solicitud.
+            </div>
+        }
+
+        <div class="row">
+
+            <div class="col-md-3">
+                @Html.Partial("~/Views/Publicacion/Imagen.cshtml", Model.Publicacion)
+            </div>
+            <div class="col-md-5">
+                @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", Model.Publicacion, new ViewDataDictionary { { "longitudCadena", 200 } })
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="page-header">Resumen</h4>
+
+                <h5 class="text-danger"><small class="text-muted">Cantidad</small>&nbsp;&nbsp;@Model.cantidad unidad(es)</h5>
+                <h5 class="text-danger"><small class="text-muted">Costo total</small>&nbsp;&nbsp;$@string.Format("{0:n}", Model.Publicacion.precio * Model.cantidad)</h5>
+                <h5 class="text-danger"><small class="text-muted">Fecha</small>&nbsp;&nbsp;@Model.fecha.ToShortDateString()</h5>
+                <h5 class="text-danger"><small class="text-muted">Destino</small>&nbsp;&nbsp;@Model.Direccion.getString()</h5>
+                <h5 class="text-danger"><small class="text-muted">Medio de pago</small>&nbsp;&nbsp;@Model.TarjetaDeCredito.numeroDeTarjeta.Substring(0, 4)**** </h5>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <h3 class="page-header">Opina sobre tu experiencia</h3>
+
+            <form action="@Url.Action("VerDetalle", "Compra")" method="post">
+                <input type="hidden" name="idCompra" value="@Model.idCompra"/>
+
+                @if (Model.Usuario.usuario1 == User.Identity.Name)
+                {
+                    <div class="col-md-6">
+                        <h3>Tú, como comprador <strong>(@User.Identity.Name)</strong></h3>
+
+                        <div class="form-group">
+                            <label>Califica al vendedor</label>
+                            <select name="calificacionDeCompra" class="form-control">
+                                <option value="true" @(Model.calificacionDeCompra == true ? "selected" : "")>Buen vendedor</option>
+                                <option value="false" @(Model.calificacionDeCompra == false ? "selected" : "")>Mal vendedor</option>
+                                <option value="null" @(Model.calificacionDeCompra == null ? "selected" : "")>Sin opinión</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario al vendedor</label>
+                            <textarea name="comentarioDeCompra" placeholder="Tu comentario aquí" class="form-control">@Model.comentarioDeCompra</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>El vendedor <strong><a href="@Url.Action("Index", "Perfil", new { idUsuario = Model.Publicacion.Usuario.idUsuario })">@Model.Publicacion.Usuario.usuario1</a></strong> te calificó así</h3>
+
+                        <input type="hidden" name="calificacionDeVenta" value="@(Model.calificacionDeVenta == true ? "true" : Model.calificacionDeVenta == false ? "false" : "null")"/>
+                        <input type="hidden" name="comentarioDeVenta" value="@(Model.comentarioDeVenta)"/>
+
+                        <div class="form-group">
+                            <label>Calificación del vendedor</label>
+                            <select class="form-control" disabled>
+                                <option @(Model.calificacionDeVenta == true ? "selected" : "")>Buen comprador</option>
+                                <option @(Model.calificacionDeVenta == false ? "selected" : "")>Mal comprador</option>
+                                <option @(Model.calificacionDeVenta == null ? "selected" : "")>Sin opinión</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario del vendedor</label>
+                            <textarea placeholder="Sin comentario" class="form-control" disabled>@Model.comentarioDeVenta</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-4 col-md-4">
+                        <input type="submit" value="Guardar" class="btn btn-block btn-success" />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-6">
+                        <h3>Tú, como vendedor <strong>(@User.Identity.Name)</strong></h3>
+
+                        <div class="form-group">
+                            <label>Califica al comprador</label>
+                            <select name="calificacionDeVenta" class="form-control">
+                                <option value="true" @(Model.calificacionDeVenta == true ? "selected" : "")>Buen comprador</option>
+                                <option value="false" @(Model.calificacionDeVenta == false ? "selected" : "")>Mal comprador</option>
+                                <option value="null" @(Model.calificacionDeVenta == null ? "selected" : "")>Sin opinión</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario al comprador</label>
+                            <textarea name="comentarioDeVenta" placeholder="Tu comentario aquí" class="form-control">@Model.comentarioDeVenta</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>El comprador <strong><a href="@Url.Action("Index", "Perfil", new { idUsuario = Model.Usuario.idUsuario } )">@Model.Usuario.usuario1</a></strong> te calificó así</h3>
+
+                        <input type="hidden" name="calificacionDeCompra" value="@(Model.calificacionDeCompra == true ? "true" : Model.calificacionDeCompra == false ? "false" : "null")" />
+                        <input type="hidden" name="comentarioDeCompra" value="@(Model.comentarioDeCompra)" />
+
+                        <div class="form-group">
+                            <label>Calificación del comprador</label>
+                            <select class="form-control" disabled>
+                                <option @(Model.calificacionDeCompra == true ? "selected" : "")>Buen vendedor</option>
+                                <option @(Model.calificacionDeCompra == false ? "selected" : "")>Mal vendedor</option>
+                                <option @(Model.calificacionDeCompra == null ? "selected" : "")>Sin opinión</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario del comprador</label>
+                            <textarea placeholder="Su comentario aquí" class="form-control" disabled>@Model.comentarioDeCompra</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-4 col-md-4">
+                        <input type="submit" value="Guardar" class="btn btn-block btn-success" />
+                    </div>
+                }
+
+            </form>
+        </div>
+
+    </div>
+</div>

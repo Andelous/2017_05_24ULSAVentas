@@ -1,0 +1,24 @@
+﻿@{
+    bool? correoCorreoEliminado = (bool?)TempData["correoCorreoEliminado"];
+}
+
+@if (correoCorreoEliminado == true)
+{
+    <div class="alert alert-warning">
+        Correo eliminado con éxito.
+    </div>
+}
+else if (correoCorreoEliminado == false)
+{
+    <div class="alert alert-danger">
+        El correo no se eliminó.
+    </div>
+}
+
+<div class="btn-group btn-group-justified">
+    <a class="btn btn-default btn-block" data-dismiss="modal" onclick="@("window.location.href='" + @Url.Action("Informacion", "Cuenta") + "'");">Cerrar</a>
+</div>
+
+@{
+    TempData["correoCorreoEliminado"] = null;
+}
