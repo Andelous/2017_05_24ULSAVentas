@@ -203,6 +203,7 @@
     <Compile Include="Controllers\FavoritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PruebasController.cs" />
     <Compile Include="Controllers\PublicacionesController.cs" />
     <Compile Include="Controllers\TarjetaController.cs" />
@@ -365,6 +366,8 @@
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Compra\VerDetalle.cshtml" />
     <Content Include="Views\Cuenta\Ventas.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Perfil\RenderizarPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
