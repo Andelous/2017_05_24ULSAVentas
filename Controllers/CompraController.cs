@@ -47,6 +47,42 @@ namespace _2017_05_24ULSAVentas.Controllers
         [HttpPost]
         public ActionResult Comprar(int idPublicacion, int cantidad, int idTarjeta, int idDireccion)
         {
+            Publicacion p = null;
+            TarjetaDeCredito t = null;
+            Direccion d = null;
+            Usuario u = null;
+
+            Compra c = null;
+
+            try
+            {
+                u = db.Usuario.First(u1 => u1.usuario1 == User.Identity.Name);
+                p = db.Publicacion.First(p1 => p1.idPublicacion == idPublicacion);
+                t = db.TarjetaDeCredito.First(t1 => t1.idTarjeta == idTarjeta);
+                d = db.Direccion.First(d1 => d1.idDireccion == idDireccion);
+
+                c = new Compra();
+
+                c.cantidad = cantidad;
+                c.fecha = DateTime.Now;
+                c.idDireccion = d.idDireccion;
+                c.idPublicacion = p.idPublicacion;
+                c.idTarjeta = t.idTarjeta;
+                c.idUsuario = u.idUsuario;
+
+                p.cantidad -= cantidad;
+
+                db.Compra.InsertOnSubmit(c);
+                db.SubmitChanges();
+
+                TempData["compraCompraRealizada"] = true;
+            }
+            catch (Exception)
+            {
+                TempData["compraCompraRealizada"] = false;
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
             return RedirectToAction("Compras", "Cuenta");
         }
     }

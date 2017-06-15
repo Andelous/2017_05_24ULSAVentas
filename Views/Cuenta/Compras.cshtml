@@ -5,7 +5,22 @@
     Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
     ViewBag.Title = "Compras";
     ViewBag.cuentaPaginaActiva = "compras";
+
+    bool? compraCompraRealizada = (bool?)TempData["compraCompraRealizada"];
 }
 
 <small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> compras</small>
 <hr />
+
+@if (compraCompraRealizada == true)
+{
+    <div class="alert alert-success">
+        Compra realizada con éxito.
+    </div>
+}
+else if (compraCompraRealizada == false)
+{
+    <div class="alert alert-danger">
+        Error al procesar la compra
+    </div>
+}
