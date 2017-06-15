@@ -50,7 +50,7 @@
     <div class="col-md-offset-1 col-md-10">
 
 
-        <h2 class="page-header"><strong>@Model.titulo</strong> <small class="pull-right">por <strong>@Model.Usuario.usuario1</strong></small></h2>
+        <h2 class="page-header"><strong>@Model.titulo</strong> <small class="pull-right">por <strong><a href="@Url.Action("Index", "Perfil", new { idUsuario = Model.Usuario.idUsuario })">@Model.Usuario.usuario1</a></strong></small></h2>
 
         @if (comentarioComentarioAgregado == true)
         {

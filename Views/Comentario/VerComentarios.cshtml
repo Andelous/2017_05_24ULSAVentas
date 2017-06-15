@@ -11,7 +11,7 @@
             {
                 <div class="panel @(Request.IsAuthenticated && c.Usuario.usuario1 == User.Identity.Name ? "panel-success" : "panel-default")">
                     <div class="panel-heading">
-                        @c.fecha.ToShortDateString() - <strong>@c.Usuario.usuario1</strong> dijo...
+                        @c.fecha.ToShortDateString() - <strong><a href="@Url.Action("Index", "Perfil", new { idUsuario = c.Usuario.idUsuario })">@c.Usuario.usuario1</a></strong> dijo...
                     </div>
                     <div class="panel-body">
                         @c.comentario1

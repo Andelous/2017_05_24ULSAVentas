@@ -37,7 +37,7 @@ else if (compraCompraActualizada == false)
             <div class="col-md-6">
                 @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", c.Publicacion, new ViewDataDictionary { { "longitudCadena", 200 } })
                 <br />
-                <p><strong>@c.fecha.ToShortDateString() - @c.Usuario.usuario1</strong> compró @c.cantidad unidad(es)</p>
+                <p><strong>@c.fecha.ToShortDateString() - <a href="@Url.Action("Index", "Perfil", new { idUsuario = c.Usuario.idUsuario} )">@c.Usuario.usuario1</a></strong> compró @c.cantidad unidad(es)</p>
             </div>
 
             <div class="col-md-3">
