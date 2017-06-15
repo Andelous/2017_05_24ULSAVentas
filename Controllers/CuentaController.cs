@@ -109,5 +109,22 @@ namespace _2017_05_24ULSAVentas.Controllers
 
             return View(compras);
         }
+
+        public ActionResult Ventas()
+        {
+            List<Compra> ventas = new List<Compra>();
+
+            try
+            {
+                Usuario u = db.Usuario.First(u1 => u1.usuario1 == User.Identity.Name);
+                ventas = db.Compra.Where(c => c.Publicacion.idUsuario == u.idUsuario).ToList();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return View(ventas);
+        }
     }
 }

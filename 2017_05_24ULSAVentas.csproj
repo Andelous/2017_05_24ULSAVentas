@@ -364,6 +364,7 @@
     <Content Include="Views\Telefono\EliminarTelefono.cshtml" />
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Compra\VerDetalle.cshtml" />
+    <Content Include="Views\Cuenta\Ventas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

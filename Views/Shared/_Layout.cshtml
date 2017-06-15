@@ -46,14 +46,16 @@
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav">
-                    <li class="@(layoutPaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")" data-toggle="tooltip" data-placement="bottom" title="Inicio"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="@(layoutPaginaActiva == "inicio" ? "active":"")"><a href="@Url.Action("Index","Home")" data-toggle="tooltip" data-placement="bottom" title="Inicio" style="border-left:solid"><span class="glyphicon glyphicon-home"></span></a></li>
                     @if (Request.IsAuthenticated)
                     {
-                        <li class="@(layoutPaginaActiva == "publicar" ? "active" : "")"><a href="@Url.Action("Publicar", "Publicaciones")" data-toggle="tooltip" data-placement="bottom" title="Publicar"><span class="glyphicon glyphicon-plus"></span></a></li>
+                        <li class="@(layoutPaginaActiva == "publicar" ? "active" : "")"><a href="@Url.Action("Publicar", "Publicaciones")" data-toggle="tooltip" data-placement="bottom" title="Publicar" style="border-right:solid"><span class="glyphicon glyphicon-plus"></span></a></li>
                         <li><a></a></li>
-                        <li class="@(layoutPaginaActiva == "publicaciones" ? "active" : "")"><a href="@Url.Action("Publicaciones", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Publicaciones"><span class="glyphicon glyphicon-tags"></span></a></li>
-                        <li class="@(layoutPaginaActiva == "favoritos" ? "active" : "")"><a href="@Url.Action("Favoritos", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Favoritos"><span class="glyphicon glyphicon-heart"></span></a></li>
-                        <li class="@(layoutPaginaActiva == "compras" ? "active" : "")"><a href="@Url.Action("Compras", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Compras"><span class="glyphicon glyphicon-usd"></span></a></li>
+                        <li class="@(layoutPaginaActiva == "publicaciones" ? "active" : "")"><a href="@Url.Action("Publicaciones", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Publicaciones" style="border-left:solid"><span class="glyphicon glyphicon-tags"></span></a></li>
+                        <li class="@(layoutPaginaActiva == "favoritos" ? "active" : "")"><a href="@Url.Action("Favoritos", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Favoritos" style="border-right:solid"><span class="glyphicon glyphicon-heart"></span></a></li>
+                        <li><a></a></li>
+                        <li class="@(layoutPaginaActiva == "compras" ? "active" : "")"><a href="@Url.Action("Compras", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Compras" style="border-left:solid"><span class="glyphicon glyphicon-usd"></span></a></li>
+                        <li class="@(layoutPaginaActiva == "ventas" ? "active" : "")"><a href="@Url.Action("Ventas", "Cuenta")" data-toggle="tooltip" data-placement="bottom" title="Ventas" style="border-right:solid"><span class="glyphicon glyphicon-list"></span></a></li>
                     }
                 </ul>
 

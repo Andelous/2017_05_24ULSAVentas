@@ -26,6 +26,9 @@
             <a href="@Url.Action("Compras")" class="btn btn-default btn-lg @(cuentaPaginaActiva == "compras" ? "active" : "")" style="text-align:left;">
                 <span class="glyphicon glyphicon-usd"></span> &nbsp;&nbsp;Mis compras</a>
 
+            <a href="@Url.Action("Ventas")" class="btn btn-default btn-lg @(cuentaPaginaActiva == "ventas" ? "active" : "")" style="text-align:left;">
+                <span class="glyphicon glyphicon-list"></span> &nbsp;&nbsp;Mis ventas</a>
+
         </div>
 
     </div>
@@ -48,6 +51,9 @@
                     break;
                 case "compras":
                     <span class="glyphicon glyphicon-usd"></span>
+                    break;
+                case "ventas":
+                    <span class="glyphicon glyphicon-list"></span>
                     break;
             }
             

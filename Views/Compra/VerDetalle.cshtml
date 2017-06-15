@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-offset-1 col-md-10">
         
-        <h2 class="page-header">Detalle de compra (#@Model.idCompra)</h2>
+        <h2 class="page-header">Detalle de compra/venta (#@Model.idCompra)</h2>
 
         @if (compraCompraActualizada == true)
         {
@@ -55,7 +55,7 @@
                 @if (Model.Usuario.usuario1 == User.Identity.Name)
                 {
                     <div class="col-md-6">
-                        <h3>Tú, como comprador (@User.Identity.Name)</h3>
+                        <h3>Tú, como comprador <strong>(@User.Identity.Name)</strong></h3>
 
                         <div class="form-group">
                             <label>Califica al vendedor</label>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <h3>El vendedor @Model.Publicacion.Usuario.usuario1 te calificó así</h3>
+                        <h3>El vendedor <strong>@Model.Publicacion.Usuario.usuario1</strong> te calificó así</h3>
 
                         <input type="hidden" name="calificacionDeVenta" value="@(Model.calificacionDeVenta == true ? "true" : Model.calificacionDeVenta == false ? "false" : "null")"/>
                         <input type="hidden" name="comentarioDeVenta" value="@(Model.comentarioDeVenta)"/>
@@ -100,7 +100,7 @@
                 else
                 {
                     <div class="col-md-6">
-                        <h3>Tú, como vendedor (@User.Identity.Name)</h3>
+                        <h3>Tú, como vendedor <strong>(@User.Identity.Name)</strong></h3>
 
                         <div class="form-group">
                             <label>Califica al comprador</label>
@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <h3>El comprador @Model.Usuario.usuario1 te calificó así</h3>
+                        <h3>El comprador <strong>@Model.Usuario.usuario1</strong> te calificó así</h3>
 
                         <input type="hidden" name="calificacionDeCompra" value="@(Model.calificacionDeCompra == true ? "true" : Model.calificacionDeCompra == false ? "false" : "null")" />
                         <input type="hidden" name="comentarioDeCompra" value="@(Model.comentarioDeCompra)" />

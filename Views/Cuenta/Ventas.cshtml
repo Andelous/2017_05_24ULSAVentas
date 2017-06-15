@@ -3,14 +3,13 @@
 
 @{
     Layout = "~/Views/Cuenta/_LayoutCuenta.cshtml";
-    ViewBag.Title = "Compras";
-    ViewBag.cuentaPaginaActiva = "compras";
-
-    bool? compraCompraRealizada = (bool?)TempData["compraCompraRealizada"];
+    ViewBag.Title = "Ventas";
+    ViewBag.cuentaPaginaActiva = "ventas";
+    
     bool? compraCompraActualizada = (bool?)TempData["compraCompraActualizada"];
 }
 
-<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> compras</small>
+<small><strong>@(Model != null ? Model.Count.ToString() : "0")</strong> ventas</small>
 <hr />
 
 @if (compraCompraActualizada == true)
@@ -26,20 +25,6 @@ else if (compraCompraActualizada == false)
     </div>
 }
 
-@if (compraCompraRealizada == true)
-{
-    <div class="alert alert-success">
-        Compra realizada con éxito.
-    </div>
-}
-else if (compraCompraRealizada == false)
-{
-    <div class="alert alert-danger">
-        Error al procesar la compra
-    </div>
-}
-
-
 @if (Model != null && Model.Count > 0)
 {
     foreach (Compra c in Model)
@@ -52,7 +37,7 @@ else if (compraCompraRealizada == false)
             <div class="col-md-6">
                 @Html.Partial("~/Views/Publicacion/Descripcion.cshtml", c.Publicacion, new ViewDataDictionary { { "longitudCadena", 200 } })
                 <br />
-                <p><strong>@c.fecha.ToShortDateString()</strong> - Compraste @c.cantidad unidad(es)</p>
+                <p><strong>@c.fecha.ToShortDateString() - @c.Usuario.usuario1</strong> compró @c.cantidad unidad(es)</p>
             </div>
 
             <div class="col-md-3">
@@ -69,6 +54,6 @@ else if (compraCompraRealizada == false)
 else
 {
     <div class="alert alert-info">
-        Parece que aún no has comprado algún artículo en el sitio. Utiliza la barra de búsqueda para comenzar, o checa los artículos sugeridos en la página principal.
+        Parece que aún no tienes ventas en el sitio.
     </div>
 }
