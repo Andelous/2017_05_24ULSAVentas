@@ -124,7 +124,6 @@ namespace _2017_05_24ULSAVentas.Controllers
             catch (Exception)
             {
                 TempData["compraCompraActualizada"] = false;
-                throw;
                 return RedirectToAction("Compras", "Cuenta");
             }
 
